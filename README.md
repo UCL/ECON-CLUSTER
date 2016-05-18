@@ -156,5 +156,54 @@ as a 'test case' - it will crash!!!
 
 # Memory Management
 
+Please think about your job's memory usage.
+
+In order for us to make best use of the cluster, we now require you to submit your expected memory usage when you submit a job (if you leave this out, your job will not run).
+
+If your job goes over this requested limit, it will be automatically killed.  The more memory you request, the longer your job will wait in the queue. Only request what you think you need.
+
+To do this, either add BOTH: 
+
+```sh
+-l h_vmem=xG
+-l tmem=xG
+```
+
+or
+
+```sh
+-l h_vmem=xM, tmem=xM
+```
+
+Alternatively to your qsub command or in your qsub script add:
+
+```sh
+#$ -l h_vmem=xG,tmem=xG
+```
+  
+Most nodes have between 2 and 8GB per core.  The physical machines vary from 4GB to 1TB, but if you want to run a job requiring more than 47.2GB please contact request@cs.ucl.ac.uk.
+
+For the best job throughput please request less than 1.9G.
+
+```sh
+-l tmem=1.9G,h_vmem=1.9G
+```
+
+There are only a few machines with more than 64GB of memory. If you request more than 8G you will probably need to add a resource reservation to your job, unless the cluster is very empty.
+
+To add resource reservation to a job add:
+```sh
+-R y
+```
+to your qsub or in your qsub script, add:
+```sh
+#$ -R y
+```
+
+
+* Although machines have 8,16,24,48,96,128,256 and 1TB of memory, in reality this translates into requestable memory of 7.9,15.7,23.5,62.9,47.2,94.4GB. ie if you request 16G you will not be able to run on any of the 16G machines and your job will queue for longer.
+
+** Also note in a parallel environment, the amount you request is the h_vmem and tmem multiplied by the number of cpu's you request.
+
 See http://hpc.cs.ucl.ac.uk/memory_managment/. [Key take aways]
 
