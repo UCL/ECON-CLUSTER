@@ -1,23 +1,26 @@
 # Computer Science (CS) HPC Cluster
 
-Below is description explaining how members of the Economics faculty can access nodes on the Computer Science's HPC Cluster.
+Through the CS HPC Cluster the Economics Deparmtent has access to over 1000 nodes.
+
+- [hardware](http://hpc.cs.ucl.ac.uk/cluster_hardware/)
+
+Below is description explaining of how members of the Economics faculty can access nodes on the Computer Science's HPC Cluster.
 
 If you need help setting up or run into problems please contact:
-* support: request@cs.ucl.ac.uk
-* cluster: cluster-support@cs.ucl.ac.uk
-[sep queue for helpdesk questions viewable by a user: ask lars?]
 
+* CS support: cluster-support@cs.ucl.ac.uk
+
+[Request more memory etc -> CS requests: request@cs.ucl.ac.uk]
 
 ## 1. Accessing the CS Cluster
 
-Unfortunately, your UCL account cannot be used to access the CS-Cluster. To have access to the CS cluster and its graphical interfaces you will need two accounts:
+Like the Economics department, the CS department has two types of account - a departmental account and a HPC account. 
 
-* CS HPC-Cluster account: This account allows the user access the CS-HPC Cluster via SSH. Note that without special permissions, access only permitted on UCL campus.
-* CS account: This is analogous to your Economics account. It gives the user access to the Computer Science's Remote Worker (CSRW), [Thinlinc](http://www.cs.ucl.ac.uk/csrw).
+If you only require command line access to the CS HPC, you only need a CS HPC account to gain access via SSH. If, however, you wish to access the CS HPC through a graphical user interface (i.e. remote desktop) you will need both a CS departmental account and a CS HPC account. 
 
-Formally, only the CS HPC cluster account is needed for SSH access. However, for users wanting a graphical user interface (GUI) a CS account is needed. 
+This is because the CS HPC graphical interface, the [Computer Science Remote Worker](http://www.cs.ucl.ac.uk/csrw) (CSRW), requires a CS departmental account to use it (see section XX below for more details on CSRW).
 
-At the time of writing, NX client - the graphical user interface used by the Economics department to access its HPC - is not supported. However, there are plans to support it in the near future.
+Note that the CS HPC can only be accessed from the UCL campus. If you would like access from outside UCL you will need contact the CS support team (see section XX for more details).
 
 ### 1.1 Getting registered with Computer Science (CS) Dept
 
@@ -36,26 +39,42 @@ What to do:
 
 Once you have CS account, they will set up a CS cluster account. You will then need to set the password either over the phone or in person at CS helpdesk office. 
 
-#### What this should give you?
+To only apply for a CS cluster account fill in this online [form](http://hpc.cs.ucl.ac.uk/account_application_form/).
 
-Once you have a CS accounts you have (external) access to:
+# 2. Connecting to the Cluster
 
-- VPN & SHH access to CS HPC and CS supported graphical interfaces to HPC:
-	- Can SSH into jet.cs.ucl.ac.uk or storm.cs.ucl.ac.uk. Do take care to enter password correctly when prompted to avoid running into anti-hacking software. If you do, note that the SSH tunnels are not jointly protected by same software. So try the other one!
+## 2.1. Graphical User Interface (GUI) - CSRW, Thinlinc
 
+Graphical User Interface/Remote Desktop through Computer Sceince Remote Worker, [Thinlinc](http://www.cs.ucl.ac.uk/index.php?id=7404) 
 
-_Issues to be resolved_
-- There is an issue with using ISD passwords. This is why need to do this.
-- CLOSING ACCOUNT: Leaving accounts... What is Econ policy?
+[add notes]
 
+At the time of writing, NX client - the graphical user interface used by the Economics department to access its HPC - is not supported. However, there are plans to support it in the near future.
 
-# 2. Economics Group @ UCL within CS cluster
+## 2.2. Terminal Access
 
-We have bought 240 nodes and have to around 1000 nodes. Gives us access to CS's [hardware](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
+To login, first open a terminal window. Then logon using ssh as follows. The option -X allows for graphic x-windows to be forwarded from the cluster to your computer.
 
-## 2.1 Usage 
+```sh
+ssh -X uctpXXX@vic.cs.ucl.ac.uk
+```
 
-### How to login
+where 
+* The option -X allows graphics to be forwarded form the cluster to your computer.
+* The username "uctpXXX" is the name of the user. The username should be your UCL username
+* The text after the @ is the address of the server.
+After you type the command, the server will ask for a password. The password should be your you CS Cluster Account Password.
+
+CS-HPC login nodes for Econ department:
+
+* wise.cs.ucl.ac.uk
+* vic.ucl.cs.ac.uk
+
+If you are using How to log in from 
+
+- [Windows](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_windows/)
+- [Mac OSX](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_mac/)
+- [Linux](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_linux/)
 
 	1) To SSH into the CS HPC 
 
@@ -66,12 +85,28 @@ ssh -X uctpXXX@vic.cs.uc.ac.uk
 where 'uctpXXX' is a placeholder for your UCL username and 'vic' is the name of one of the nodes. There are others!
 Then enter your CS password at the prompt.
 
-	ii) Graphical User Interface/Remote Desktop through Computer Sceince Remote Worker, [Thinlinc](http://www.cs.ucl.ac.uk/index.php?id=7404) 
+# 3. General Information about the cluster
 
-[add notes]
+- Queues
+- Parallel Environments
+- Storage
+- Software licenses
 
 
-## 2.3 Software
+# 4.  Tranfserring Files to and from the CS Cluster
+
+SFTP: WinSCP or FileZilla
+
+- Project Stores
+	+ See my notes
+
+- Mount SAN -> this needs to be discussed and finalised. Seems likely will need to mount econ server on CS
+
+# 5. The Module Environment
+
+Symmetric 
+
+But note Stata & MATLAB
 
 [Add modules documentation - confirm with John whether we really want everyone to have write installation at common root]
 
@@ -81,9 +116,53 @@ A list of the installed software can be found in the folder './share/apps/econ'.
 
 If you want to install a programme please do so by installing it into the shared apps directory so all can access it. This folder accessible to all in Economics Dept.
 
-## Transferring Files
+# 6. Sun Grid Engine
 
-[any ftp will work. Alternatively can mount on Econ storage - symmetric usage 
+To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Engine© (SGE) solution to keep track of what resources are avaialble. Depending on the load, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.
+
+## 6.1. Interactive sessions
+
+This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.
+
+[Note -> This is a difference between ECON HPC and CS HPC. qrsh. CS not keen on this - should check if some additional restrictions.]
+
+From CS website: If you absolutely insist on using an interactive session:
+
+From your terminal once you have logged into the CS HPC Cluster:
+
+```sh
+qrsh -l h_vmem=8G,tmem=8G,h_rt=8:0:0
+```
+
+This will log you into an available node for 8hrs and allow you to use 8G of memory.
+
+
+## 6.2. Non-interactive sessions
+
+This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.
+
+[Question for JM: Are we porting over econutils modules to cluster?]
+
+[See Econ Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions)
+
+[CS specific requirements](http://hpc.cs.ucl.ac.uk/job_submission_sge/basic_sge_submission/)
+
+## 6.3. Checking the status of your jobs
+
+This section shows you how to check the current status of your jobs and the SGE queues.
+
+## 6.4. Deleting jobs
+
+This section shows you how to remove unwanted jobs from the SGE queues.
+
+# 7. Applications
+
+I am not sure this is the most useful page in the world on Econ Wiki
+
+# 8. Policies and Best Practices
+
+[CS department cluster etiquette](http://hpc.cs.ucl.ac.uk/cluster_etiquette/)
+
 
 ## Running code
 
@@ -154,7 +233,7 @@ as a 'test case' - it will crash!!!
 
 [Ask John how pe julia is set up - update with my notes]
 
-# Memory Management
+## Memory Management
 
 Please think about your job's memory usage.
 
