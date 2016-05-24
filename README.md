@@ -4,11 +4,7 @@ Through the CS HPC Cluster the Economics Deparmtent has access to over 1000 [nod
 
 Below is description explaining of how members of the Economics faculty can access nodes on the Computer Science's HPC Cluster.
 
-If you need help setting up or run into problems please contact:
-
-* CS support: cluster-support@cs.ucl.ac.uk
-
-[There is another email to make HPC specific requests (i.e. storage, etc. CS requests: request@cs.ucl.ac.uk]
+If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk. Outside of cluster support you make like to request additional storage etc. To do so please contact CS requests: request@cs.ucl.ac.uk.
 
 ## 1. Accessing the CS Cluster
 
@@ -74,16 +70,16 @@ Further platform specific logon details can be found below:
 
 # 3. General Information about the cluster
 
-## Parallel Environments
+## 3.1 Parallel Environments
 
 There are several parallel environments on the CS HPC:
 
-- smpd: single node with multiple workers. 
-- matlab2014b: parallel environment specific to Matlab. Note: CS only support b release each year.
-- mpi: Old MPI interface
-- mpich: New MPI interface
-- orte: Distributed computing across nodes without attempting to cluster on a given node. 
-- [julia - to be confirmed - would be good to add symmetric as ECON HPC]? 
+- `smpd`: single node with multiple workers. 
+- `matlab2014b`: parallel environment specific to Matlab. CS only support b release each year. **[Check if 15b supported]**
+- `mpi`: Old MPI interface
+- `mpich`: New MPI interface
+- `orte`: Distributed computing across nodes without attempting to cluster on a given node. 
+- **[Issue 1: Add `julia`: would be good to add symmetric as ECON HPC]** 
 
 Add the following lines to your script to set up a parallel environment. Note the second line is only necessary when using more than one node i.e. default is Default is `#$ -R n`.
 
@@ -131,46 +127,41 @@ _Note this may be slow as the programme will wait for node with enough cores to 
 
 Also, do take a moment to review http://hpc.cs.ucl.ac.uk/cluster_etiquette/. 
 
-**WARNING** 
-
-NEVER do:
+**WARNING**: NEVER run a 'test case' with a single worker - it will crash!!!
 
 ```sh
 #$ pe mpi 1 
 ```
 
-as a 'test case' - it will crash!!!
+## 3.2 Storage
 
+**[Issue 2: The following issues are currently outstanding:**
 
-## Storage
+- **Account storage is not backed up and is quite limited**
+- **The CS HPC existing system uses project stores for backed up storage. These can be accessed by multiple users by UNIX user lists. Notify CS request to set this up**
+- **To consider mounting the Economics SAN onto CS Cluster?]**
 
-[To be confirmed]
+## 3.3 Software licenses
 
-[The CS HPC users existing system uses project stores. UNIX user lists can be added for multiple users to access Project Stores.]
-
-[Mount the SAN? To be confirmed] 
-
-
-## Software licenses
-
-[Same as [here](https://www.econ.ucl.ac.uk/wiki/index.php/General_system_information)?]
+**[Issue 3: Same as [here](https://www.econ.ucl.ac.uk/wiki/index.php/General_system_information)?]**
 
 # 4.  Tranfserring Files to and from the CS Cluster
 
 Any SFTP service can be used to transfer files to and from the cluster. Popular SFTP include [WinSCP](https://winscp.net/eng/index.php) or [FileZilla](https://filezilla-project.org/)
 
-[_To be confirmed_: If the Economics SAN is mounted on the CS cluster then transferring files from the CS HPC Cluster to/from the Economics deparment would no longer require sftp. ]
+**[Issue 4: Related to Issue 3.2, if the Economics SAN is mounted on the CS cluster then transferring files from the CS HPC Cluster to/from the Economics deparment would no longer require sftp. ]**
 
-# 5. The Module Environment
+# 5. Accessing Software
 
-As it currently stands ... 
-
-A list of the installed software can be found in the folder './share/apps/econ'.  To load the software you will need to locate the .exe files. Once located it may be convenient to define PATH and environment variables so that the software can be easily accessed from the terminal command line. 
+A list of the installed software can be found in the folder `./share/apps/econ`.  To load the software you will need to locate the `.exe` files. Once located it may be convenient to define `PATH` and environment variables so that the software can be easily accessed from the terminal command line. 
 
 If you want to install a programme please do so by installing it into the shared apps directory so all can access it. This folder accessible to all in Economics Dept.
 
-**Question** - is the really what we want? People with write access? Seem not. I know we have some modules, is current setup identical to [this](https://www.econ.ucl.ac.uk/wiki/index.php/The_Module_Environment). Matlab? Stata?
+**[Issue 5: From discussion it seems this is unlikely to work well for ECON users. I know we have setup module environment in CS HPC. If this finished? If so is current setup identical to [this](https://www.econ.ucl.ac.uk/wiki/index.php/The_Module_Environment)?]**
 
+**[Issue 6: What is situation with Matlab? Stata?]**
+
+**[Issue 7: As it stands users can add their own software - this is restricted on ECON HPC - do we want it restricted here?]**
 
 # 6. Sun Grid Engine
 
@@ -200,55 +191,37 @@ This will log you into an available node for 8hrs and allow you to use 8G of mem
 
 _Note: From the user's persepective the 'qrsh' command is an alternative to 'qlogin' command currently used on the ECON HPC._
 
-
 ## 6.2. Non-interactive sessions
 
 This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.
 
-[Question for JM: Are we porting over econutils modules to cluster?]
+A detailed discussion of how to submit batch jobs with many useful the SGE options can be found on the [Econ Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions).
 
-[See Econ Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions)
-
-[CS specific requirements](http://hpc.cs.ucl.ac.uk/job_submission_sge/basic_sge_submission/)
+In addition, you will have to add lines to your job submission script to respect the additional [CS HPC requirements](http://hpc.cs.ucl.ac.uk/job_submission_sge/basic_sge_submission/).
 
 ## 6.3. Checking the status of your jobs
 
-This section shows you how to check the current status of your jobs and the SGE queues.
-
-[To be confirmed - I don't think commands will be the same in all cases (i.e. 
-`qstat-rn`  won't work i think.] 
+This section shows you how to check the current status of your jobs and the SGE queues. See the [Econ Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Checking_the_status_of_your_jobs).
 
 ## 6.4. Deleting jobs
 
-To delete a job type 
+To delete job with job number 123456 type:
 
 ```sh
-qdel -j XXXXXX
+qdel 123456
 ```
-
-where XXXXX is the job number 
 
 # 7. Applications
 
-I am not sure this is the most useful page in the world on Econ Wiki - I would plan to exclude it?
+**[Issue 8: Are we planning to include [this](https://www.econ.ucl.ac.uk/wiki/index.php/Applications)]**
 
 # 8. Policies and Best Practices
 
-[CS department cluster etiquette](http://hpc.cs.ucl.ac.uk/cluster_etiquette/)
+## 8.1 Cluster Etiquette
 
+[CS department cluster etiquette](http://hpc.cs.ucl.ac.uk/cluster_etiquette/
 
-## Running code
-
-[You will need to learn to set PATH variables and source them at the top of job scripts. ]
-
--> I probably want an example here ... 
-
-## Parallel environment (pe)
-
-
-[Ask John how pe julia is set up - update with my notes]
-
-## Memory Management
+## 8.2 Memory Management
 
 Please think about your job's memory usage.
 
@@ -294,10 +267,9 @@ to your qsub or in your qsub script, add:
 #$ -R y
 ```
 
+* Although machines have 8, 16, 24, 48, 96, 128, 256 and 1TB of memory, in reality this translates into requestable memory of 7.9, 15.7, 23.5, 62.9, 47.2, 94.4GB. i.e. if you request 16G you will not be able to run on any of the 16G machines and your job will queue for longer.
 
-* Although machines have 8,16,24,48,96,128,256 and 1TB of memory, in reality this translates into requestable memory of 7.9,15.7,23.5,62.9,47.2,94.4GB. ie if you request 16G you will not be able to run on any of the 16G machines and your job will queue for longer.
+* Also note in a parallel environment, the amount you request is the `h_vmem` and `tmem` multiplied by the number of cpu's you request.
 
-** Also note in a parallel environment, the amount you request is the h_vmem and tmem multiplied by the number of cpu's you request.
-
-See http://hpc.cs.ucl.ac.uk/memory_managment/. [Key take aways]
+See [](http://hpc.cs.ucl.ac.uk/memory_managment/) for more details.
 
