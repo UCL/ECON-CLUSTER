@@ -1,8 +1,6 @@
 # Computer Science (CS) HPC Cluster
 
-Through the CS HPC Cluster the Economics Deparmtent has access to over 1000 nodes.
-
-- [hardware](http://hpc.cs.ucl.ac.uk/cluster_hardware/)
+Through the CS HPC Cluster the Economics Deparmtent has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
 
 Below is description explaining of how members of the Economics faculty can access nodes on the Computer Science's HPC Cluster.
 
@@ -45,11 +43,12 @@ To only apply for a CS cluster account fill in this online [form](http://hpc.cs.
 
 ## 2.1. Graphical User Interface (GUI) - CSRW, Thinlinc
 
-Graphical User Interface/Remote Desktop through Computer Sceince Remote Worker, [Thinlinc](http://www.cs.ucl.ac.uk/index.php?id=7404) 
+To use graphical tools on the CS HPC cluster you can use the Computer Science Remote Worker (CSRW). 
 
-[add notes]
+To use the CSRW you will need a CS account and to have downloaded Thinlinc.
+Download and use instructions for the CS department's can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
 
-At the time of writing, NX client - the graphical user interface used by the Economics department to access its HPC - is not supported. However, there are plans to support it in the near future.
+_Note: At the time of writing, NX client - the graphical user interface used by the Economics department to access its HPC - is not supported. However, there are plans to support it in the near future._
 
 ## 2.2. Terminal Access
 
@@ -70,51 +69,112 @@ CS-HPC login nodes for Econ department:
 * wise.cs.ucl.ac.uk
 * vic.ucl.cs.ac.uk
 
-If you are using How to log in from 
+Further platform specific logon details can be found below:
 
 - [Windows](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_windows/)
 - [Mac OSX](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_mac/)
 - [Linux](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_linux/)
 
-	1) To SSH into the CS HPC 
-
-```sh
-ssh -X uctpXXX@vic.cs.uc.ac.uk
-```
-
-where 'uctpXXX' is a placeholder for your UCL username and 'vic' is the name of one of the nodes. There are others!
-Then enter your CS password at the prompt.
-
 # 3. General Information about the cluster
 
-- Queues
-- Parallel Environments
-- Storage
-- Software licenses
+## Parallel Environments
 
+There are several parallel environments on the CS HPC:
+
+- smpd: single node with multiple workers. 
+- matlab2014b: parallel environment specific to Matlab. Note: CS only support b release each year.
+- mpi: Old MPI interface
+- mpich: New MPI interface
+- orte: Distributed computing across nodes without attempting to cluster on a given node. 
+- [julia - to be confirmed - would be good to add symmetric as ECON HPC]? 
+
+Add the following lines to your script to set up a parallel environment. Note the second line is only necessary when using more than one node i.e. default is Default is `#$ -R n`.
+
+```sh
+#$ pe [pe_option]::ASCIIString NumWorkers::Int 	# <- SGE option for parallel environment
+#$ -R y 										# <- Resource reservation. Useful when lots of memory and/or multiple nodes requested. 
+```
+
+
+Below are some example of lines to add to submission script.
+
+**Example 1**: Use a single node with 4 workers in parallel add the following line to you script:
+
+```sh
+#$ pe smpd 4
+```
+
+**Example 2**: To use a single node with 16 workers in parallel add the following line to your script:
+
+```sh
+#$ pe smpd 16
+```
+
+_Note this may be slow as the programme will wait for node with enough cores to support 16 workers to be free. But it is possible._
+
+**Example 3**: To use a multiple nodes clustered on few nodes with 20 workers in parallel add the following lines to your script:
+
+```sh
+#$ pe mpich 20
+#$ -R y 
+```
+
+**Example 4**: To use a multiple nodes clustered on few nodes with 20 workers in parallel add the following lines to your script:
+
+```sh
+#$ pe mpich 20
+#$ -R y 
+```
+
+**Example 5**: To use a multiple CPUs arbitrarily distrbuted over a few nodes with 30 workers add the following lines to your script:
+
+```sh
+#$ pe orte 30
+#$ -R y
+```
+
+Also, do take a moment to review http://hpc.cs.ucl.ac.uk/cluster_etiquette/. 
+
+**WARNING** 
+
+NEVER do:
+
+```sh
+#$ pe mpi 1 
+```
+
+as a 'test case' - it will crash!!!
+
+
+## Storage
+
+[To be confirmed]
+
+[The CS HPC users existing system uses project stores. UNIX user lists can be added for multiple users to access Project Stores.]
+
+[Mount the SAN? To be confirmed] 
+
+
+## Software licenses
+
+[Same as [here](https://www.econ.ucl.ac.uk/wiki/index.php/General_system_information)?]
 
 # 4.  Tranfserring Files to and from the CS Cluster
 
-SFTP: WinSCP or FileZilla
+Any SFTP service can be used to transfer files to and from the cluster. Popular SFTP include [WinSCP](https://winscp.net/eng/index.php) or [FileZilla](https://filezilla-project.org/)
 
-- Project Stores
-	+ See my notes
-
-- Mount SAN -> this needs to be discussed and finalised. Seems likely will need to mount econ server on CS
+[_To be confirmed_: If the Economics SAN is mounted on the CS cluster then transferring files from the CS HPC Cluster to/from the Economics deparment would no longer require sftp. ]
 
 # 5. The Module Environment
 
-Symmetric 
-
-But note Stata & MATLAB
-
-[Add modules documentation - confirm with John whether we really want everyone to have write installation at common root]
+As it currently stands ... 
 
 A list of the installed software can be found in the folder './share/apps/econ'.  To load the software you will need to locate the .exe files. Once located it may be convenient to define PATH and environment variables so that the software can be easily accessed from the terminal command line. 
 
-[Find a link to show how to do this]. 
-
 If you want to install a programme please do so by installing it into the shared apps directory so all can access it. This folder accessible to all in Economics Dept.
+
+**Question** - is the really what we want? People with write access? Seem not. I know we have some modules, is current setup identical to [this](https://www.econ.ucl.ac.uk/wiki/index.php/The_Module_Environment). Matlab? Stata?
+
 
 # 6. Sun Grid Engine
 
@@ -124,17 +184,25 @@ To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Eng
 
 This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.
 
-[Note -> This is a difference between ECON HPC and CS HPC. qrsh. CS not keen on this - should check if some additional restrictions.]
+Unlike the ECON Cluster there is no distinction between a batch queue and an interactive session queue. 
 
-From CS website: If you absolutely insist on using an interactive session:
+The CS department request that users specify options to limit memory and time logged in when logging onto the CS HPC Cluster using an interactive session.
 
-From your terminal once you have logged into the CS HPC Cluster:
+As such, to open an interactive session from your terminal once you have logged into the CS HPC Cluster, type:
 
 ```sh
-qrsh -l h_vmem=8G,tmem=8G,h_rt=8:0:0
+qrsh -l h_vmem=8G, tmem=8G, h_rt=8:0:0
 ```
 
-This will log you into an available node for 8hrs and allow you to use 8G of memory.
+This will log you into an available node for 8hrs and allow you to use 8G of memory. In more detail:
+
+- 'qrsh' is an alternative interactive session login command
+- '-l' is a flag for resource requests of the interactive session
+- The resource options listed afted the '-l' flag:
+	+ h_vmem=XG, tmem=XG requests X Gb of memory
+	+ h_rt= H:M:S request that the session run for H hours, M minutes, S seconds
+
+_Note: From the user's persepective the 'qrsh' command is an alternative to 'qlogin' command currently used on the ECON HPC._
 
 
 ## 6.2. Non-interactive sessions
@@ -157,7 +225,7 @@ This section shows you how to remove unwanted jobs from the SGE queues.
 
 # 7. Applications
 
-I am not sure this is the most useful page in the world on Econ Wiki
+I am not sure this is the most useful page in the world on Econ Wiki - I would plan to exclude it?
 
 # 8. Policies and Best Practices
 
@@ -172,64 +240,6 @@ I am not sure this is the most useful page in the world on Econ Wiki
 
 ## Parallel environment (pe)
 
-Add the following lines to your script to set up a parallel environment. Note the second line is only necessary when using more than one node i.e. default is Default is #$ -R n.
-
-```sh
-#$ pe [pe_option]::ASCIIString NumWorkers::Int 	# <- SGE option for parallel environment
-#$ -R y 										# <- Resource reservation. Useful when lots of memory and/or multiple nodes requested. 
-```
-where pe_option can be one of:
-
-- smpd: single node with multiple workers. 
-- matlab2014b: parallel environment specific to Matlab. Note: CS only support b release each year.
-- mpi: Old MPI interface
-- mpich: New MPI interface
-- orte: Distributed computing across nodes without attempting to cluster on a given node. Can be much faster than mpich [To be tested!]
-
-
-*Example 1: Use a single node with 4 workers in parallel add the following line to you script:
-
-```sh
-#$ pe smpd 4
-```
-
-*Example 2: To use a single node with 16 workers in parallel add the following line to your script:
-
-```sh
-#$ pe smpd 16
-```
-
-Note this may be slow as the programme will wait for node with enough cores to support 16 workers to be free. But it is possible. 
-
-*Example 3: To use a multiple nodes clustered on few nodes with 20 workers in parallel add the following lines to your script:
-
-```sh
-#$ pe mpich 20
-#$ -R y 
-```
-
-*Example 4: To use a multiple nodes clustered on few nodes with 20 workers in parallel add the following lines to your script:
-
-```sh
-#$ pe mpich 20
-#$ -R y 
-```
-
-*Example 5: To use a multiple CPUs arbitrarily distrbuted over a few nodes with 30 workers add the following lines to your script:
-
-```sh
-#$ pe orte 30
-#$ -R y
-```
-[Check: do i need this line here to reserve some nodes? Seems I might.]
-
-Also, do take a moment to review http://hpc.cs.ucl.ac.uk/cluster_etiquette/. Finally, NEVER do:
-
-```sh
-#$ pe mpi 1 
-```
-
-as a 'test case' - it will crash!!!
 
 [Ask John how pe julia is set up - update with my notes]
 
