@@ -8,7 +8,7 @@ If you need help setting up or run into problems please contact:
 
 * CS support: cluster-support@cs.ucl.ac.uk
 
-[Request more memory etc -> CS requests: request@cs.ucl.ac.uk]
+[There is another email to make HPC specific requests (i.e. storage, etc. CS requests: request@cs.ucl.ac.uk]
 
 ## 1. Accessing the CS Cluster
 
@@ -24,14 +24,12 @@ Note that the CS HPC can only be accessed from the UCL campus. If you would like
 
 What to do:
 
-1. Fill in a Registration Form: Collect form from Room 4.20 in CS (/Econ Admin?). 
+1. Fill in a Registration Form: Collect form from Room 4.20 in CS (/Econ Admin?). The key fields to fill on the form are:
 
-The key fields to fill on the form are:
-
-a) UCL username
-b) Phone Contact for user
-c) Any supervisor permissions
-d) A signature agreeing to CS terms and conditions of usage.
+	a) UCL username
+	b) Phone Contact for user
+	c) Any supervisor permissions
+	d) A signature agreeing to CS terms and conditions of usage.
 
 2. Hand in the for to CS Helpdesk in room 4.20 in Engineering building and they will setup your account. They will notify you by email when they have done so - will take between a day and a week depending on their workload.
 
@@ -94,7 +92,6 @@ Add the following lines to your script to set up a parallel environment. Note th
 #$ pe [pe_option]::ASCIIString NumWorkers::Int 	# <- SGE option for parallel environment
 #$ -R y 										# <- Resource reservation. Useful when lots of memory and/or multiple nodes requested. 
 ```
-
 
 Below are some example of lines to add to submission script.
 
@@ -219,9 +216,18 @@ This section covers how to submit an interactive sessions along with examples of
 
 This section shows you how to check the current status of your jobs and the SGE queues.
 
+[To be confirmed - I don't think commands will be the same in all cases (i.e. 
+`qstat-rn`  won't work i think.] 
+
 ## 6.4. Deleting jobs
 
-This section shows you how to remove unwanted jobs from the SGE queues.
+To delete a job type 
+
+```sh
+qdel -j XXXXXX
+```
+
+where XXXXX is the job number 
 
 # 7. Applications
 
