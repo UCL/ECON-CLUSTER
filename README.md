@@ -219,7 +219,7 @@ qdel 123456
 
 ## 8.1 Cluster Etiquette
 
-[CS department cluster etiquette](http://hpc.cs.ucl.ac.uk/cluster_etiquette/
+[CS department cluster etiquette](http://hpc.cs.ucl.ac.uk/cluster_etiquette/)
 
 ## 8.2 Memory Management
 
@@ -271,5 +271,5 @@ to your qsub or in your qsub script, add:
 
 * Also note in a parallel environment, the amount you request is the `h_vmem` and `tmem` multiplied by the number of cpu's you request.
 
-See [](http://hpc.cs.ucl.ac.uk/memory_managment/) for more details.
+See [link](http://hpc.cs.ucl.ac.uk/memory_managment/) for more details.
 
