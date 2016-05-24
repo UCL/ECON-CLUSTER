@@ -25,10 +25,10 @@ Note that the CS HPC can only be accessed from the UCL campus. If you would like
 What to do:
 
   1. Fill in a Registration Form: Collect form from Room 4.20 in CS (/Econ Admin?). The key fields to fill on the form are:
-      - UCL username
-      - Phone Contact for user
-      - Any supervisor permissions
-      - A signature agreeing to CS terms and conditions of usage.
+  - UCL username
+  - Phone Contact for user
+  - Any supervisor permissions
+  - A signature agreeing to CS terms and conditions of usage.
 
   2. Hand in the for to CS Helpdesk in room 4.20 in Engineering building and they will setup your account. The CS team will notify you by email when they have done so. This may take between a day and a week depending on their workload.
 
