@@ -4,7 +4,7 @@ Through the CS HPC Cluster the Economics Deparmtent has access to over 1000 [nod
 
 Below is description explaining of how members of the Economics faculty can access nodes on the Computer Science's HPC Cluster.
 
-If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk. Outside of cluster support you make like to request additional storage etc. To do so please contact CS requests: request@cs.ucl.ac.uk.
+If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk. Outside of cluster support you make like to request additional storage etc. To do so please contact CS requests: request@cs.ucl.ac.uk or fill in the online [storage request form](http://hpc.cs.ucl.ac.uk/file_systems_storage/cluster_storage_request_form/cluster_storage_request_sent/).
 
 ## 1. Accessing the CS Cluster
 
