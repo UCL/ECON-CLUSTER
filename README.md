@@ -1,28 +1,31 @@
-# Computer Science (CS) HPC Cluster
+# Computer Science (CS) High-Performance Cluster (HPC)
 
-Through the CS HPC Cluster the Economics Deparmtent has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
+Through the CS HPC the Economics Deparmtent has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
 
-Below is description explaining of how members of the Economics faculty can access nodes on the Computer Science's HPC Cluster.
+Below is description explaining of how members of the Economics faculty can access nodes on the Computer Science's HPC.
 
 If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk.
 
-Throughout this document there are links to help pages hosted by the CS department. These pages are password protected. To view them enter username: hpc and password: comic.
+Throughout this document there are links to help pages hosted by the CS department. These pages are password protected. To view them enter 
+
+* username: hpc
+* password: comic.
 
 ## 1. Accessing the CS Cluster
 
-Like the Economics department, the CS department has two types of account - a departmental account and a HPC account. 
+Like the Economics department, the CS department has two types of account - a departmental account and a Cluster account. 
 
-If you only require command line access to the CS HPC, you only need a CS HPC account to gain access via SSH. If, however, you wish to access the CS HPC through a graphical user interface (i.e. remote desktop) you will need both a CS departmental account and a CS HPC account. 
+If you only require command line access to the CS HPC, you only need a CS HPC account to gain access via ssh. If, however, you wish to access the CS HPC through a graphical user interface (i.e. remote desktop) you will need both a CS departmental account and a CS HPC account. 
 
 This is because the CS HPC graphical interface, the [Computer Science Remote Worker](http://www.cs.ucl.ac.uk/csrw) (CSRW), requires a CS departmental account to use it (see section 2.1 below for more details on CSRW).
 
-Note that the CS HPC can only be accessed from the UCL campus. If you would like access from outside UCL you will need contact the CS support team. 
+Note that the CS HPC can only be accessed from the UCL campus. If you would like access from outside UCL you will need contact the CS support team.
 
 ### 1.1 Getting registered with Computer Science (CS) Dept
 
 To get a CS account: 
 
-  1. Fill in a Registration Form: Collect form from Room 4.20 in CS. The key fields to fill on the form are:
+  1. Fill in a Registration Form: Collect a from Room 4.20 in CS. The key fields to fill on the form are:
   	+ UCL username
   	+ Phone Contact for user
   	+ Any supervisor permissions
@@ -30,35 +33,33 @@ To get a CS account:
 
   2. Hand in the for to CS Helpdesk in room 4.20 in Engineering building and they will setup your account. The CS team will notify you by email when they have done so. This may take between a day and a week depending on their workload.
 
-Once you have CS account, they will set up a CS cluster account. You will then need to set the password either over the phone or in person at CS helpdesk office. 
+Once you have CS account, they will set up a CS HPC account. You will then need to set the password either over the phone or in person at CS helpdesk office. 
 
-To only apply for a CS cluster account fill in this online [form](http://hpc.cs.ucl.ac.uk/account_application_form/). 
+To only apply for a CS HPC account fill in this online [form](http://hpc.cs.ucl.ac.uk/account_application_form/). 
 
-Note that if you require both a CS account and CS Cluster account you should first get a CS account and then a CS Cluster account.
+Note that if you require both a CS account and CS HPC account you should first get a CS account.
 
-# 2. Connecting to the Cluster
+# 2. Connecting to the CS HPC
 
-To use the CS Cluster you first have to log in to a "header" or "log on" nodes. There are two "header" nodes for Economics department users:
+To use the CS HPC you first have to log in to a "header" or "log on" node. There are two "header" nodes for Economics department users on the CS HPC:
 
 * wise.cs.ucl.ac.uk
 * vic.cs.ucl.ac.uk
 
 There are two ways to access these header nodes:
 
-* Log in and open a remote desktop session on the cluster using CS department's GUI called CSRW 
-* Tunnel in directly from your terminal for command line only access
-
-Once logged on, see section 6 for details on how to run interactive and batch cluster jobs.
+* Log in and open a remote desktop session on the HPC using CS department's GUI called CSRW 
+* SSH in directly from your terminal
 
 ## 2.1. Graphical User Interface (GUI) - CSRW, Thinlinc
 
-To use graphical tools on the CS HPC cluster you can use the Computer Science Remote Worker (CSRW). 
+To use graphical tools on the CS HPC you can use the Computer Science Remote Worker (CSRW). 
 
 To use the CSRW you will need a CS account and to have downloaded Thinlinc. Download and use instructions for the CS department's can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
 
 _Note: At the time of writing, NX client - the graphical user interface used by the Economics department to access its HPC - is not supported. However, there are plans to support it in the near future._
 
-## 2.2. Accessing the cluster through a terminal
+## 2.2. Accessing the CS HPC through a terminal
 
 To gain access to the header node called `vic` from the command line using ssh type:
 
@@ -68,26 +69,26 @@ ssh -X uctpXXX@vic.cs.ucl.ac.uk
 
 where
 
-* The option -X allows graphics to be forwarded form the cluster to your computer (as long as you are on site at UCL).
+* The option -X allows graphics to be forwarded form the HPC to your computer (as long as you are on site at UCL).
 * The username "uctpXXX" is the name of the user. The username should be your UCL username
 * The text after the @ is the address of the server.
-After you type the command, the server will ask for a password. The password should be your you CS Cluster Account Password.
+After you type the command, the server will ask for a password. The password should be your you CS HPC Account Password.
 
 Further platform specific ssh logon details can be found below:
 
 - [Windows](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_windows/)
 - [Mac OSX](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_mac/)
-- [Linux](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_linux/)
+- [Linux](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_linux/) 
 
-# 3. General Information about the CS cluster
+# 3. General Information about the CS HPC
 
 ## 3.1 Storage
 
-The storage of files is quite different to the setup on the ECON HPC. 
+The storage of files is quite different to the setup on the Economics HPC. 
 
 ### 3.1.1. Saving files and making directories
 
-While it is possible to make directories and save files in your home directory on the CS Clsuter it is important to note that these files **are not backed up**. Further, it should be noted you home directory is not designed to be used with intensive writing and reading of files for large cluster jobs.
+While it is possible to make directories and save files in your home directory on the CS HPC it is important to note that these files **are not backed up**.
 
 The CS department offer backed up storage areas called **project stores**. Unlike your home directories, project stores are designed to handle intensive reading and writing of files during cluster jobs.
 
@@ -95,17 +96,17 @@ Project stores are allocated to individual users and/or multiple user groups on 
 
 ### 3.1.2. Accessing existing files on Economics Dept Server
 
-On the ECON HPC it was possible to directly access files saved on the Economics department server. At the time of writing, this is not possible on the CS Cluster. Therefore, if you want to access these files on the CS Cluster you will have to transfer them using a FTP clients (see section 4). 
+On the Economics HPC it was possible to directly access files saved on the Economics department server. At the time of writing, this is not possible on the CS HPC. Therefore, if you want to access these files on the CS HPC you will have to transfer them using a SFTP clients (see section 4). 
 
 Ideally, you should transfer these files to a project store.
 
 ## 3.2. Software licenses
 
-See [ECON Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/General_system_information)?]
+See [Economics Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/General_system_information)
 
-# 4.  Transferring Files to and from the CS Cluster
+# 4.  Transferring Files to and from the CS HPC
 
-Any SFTP service can be used to transfer files to and from the cluster. Popular SFTP include [WinSCP](https://winscp.net/eng/index.php) or [FileZilla](https://filezilla-project.org/)
+Any SFTP service can be used to transfer files to and from the CS HPC. Popular SFTP include [WinSCP](https://winscp.net/eng/index.php) or [FileZilla](https://filezilla-project.org/)
 
 # 5. Accessing compute nodes: Sun Grid Engine
 
@@ -115,7 +116,7 @@ To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Eng
 
 This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.
 
-The CS department request that users specify options to limit memory and time logged in when logging onto the CS HPC Cluster using an interactive session. As such, to open an interactive session from your terminal once you have logged into the CS HPC Cluster, type:
+The CS department request that users specify options to limit memory and time logged in when logging onto the CS HPC using an interactive session. As such, to open an interactive session from your terminal once you have logged into the CS HPC, type:
 
 ```sh
 qrsh -l h_vmem=1.9G, tmem=1.9G, h_rt=8:0:0
@@ -123,37 +124,49 @@ qrsh -l h_vmem=1.9G, tmem=1.9G, h_rt=8:0:0
 
 This will log you into an available node for 8hrs and allow you to use 1.9G of memory. In more detail:
 
-- 'qrsh' is an alternative interactive session login command
-- '-l' is a flag for resource requests of the interactive session
-- The resource options listed afted the '-l' flag:
-	+ h_vmem=XG, tmem=XG requests X Gb of memory
-	+ h_rt= H:M:S request that the session run for H hours, M minutes, S seconds
+- `qrsh` is an alternative interactive session login command
+- `-l` is a flag for resource requests of the interactive session
+- The resource options listed afted the `-l` flag:
+	+ `h_vmem=XG, tmem=XG` requests X Gb of memory 
+	+ `h_rt= H:M:S` request that the session run for `H` hours, `M` minutes, `S` seconds
 
-_Note 1: From the user's persepective the 'qrsh' command is an alternative to 'qlogin' command currently used on the ECON HPC._
+_Note 1: From the user's persepective the `qrsh` command is an alternative to `qlogin` command currently used on the Economics HPC._
 
-_Note 2: Unlike the Economics Cluster there is no distinction between a batch queue and an interactive session queue._
+_Note 2: Unlike the Economics HPC there is no distinction between a batch queue and an interactive session queue._
 
 ## 5.2. Non-interactive sessions
 
 This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.
 
-A detailed discussion of how to submit batch jobs with many useful the SGE options can be found on the [Econ Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions).
+A detailed discussion of how to submit batch jobs with many useful the SGE options can be found on the [Economics Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions).
 
-In addition, you will have to add lines to your job submission script to respect the additional [CS HPC requirements](http://hpc.cs.ucl.ac.uk/job_submission_sge/basic_sge_submission/). 
+In addition, like an interactive session, you will have to add lines specifying hard run time and memory requirements. For example, if you submit a a qsub using a shell script you must add:
 
-_Note: Users who specify a parallel environment in their submission script please do check section 5.5 for details of parallel environments on the CS cluster._
+```sh
+#$ -l h_rt=1:10:35  # This line specifies run time of 1 hour, 10 mins and 35 seconds
+#$ -l tmem=1.9G, h_vmem=1.9G # This specifies 1.9 Gigabytes (can also specify M for Megabytes of k for kilobytes)
+```
+
+The job will run without it if omitted, but with restrictive defaults applied. The defaults are:
+
+```sh
+#$ -l h_rt=0:0:30  # 30 mins is default hard run time
+#$ -l tmem=256M, h_vmem=256M # Default is 256MB
+```
+
+_Note: Users who specify a parallel environment in their submission script please do see section 5.5 for details of parallel environments on the CS HPC._
 
 ## 5.3. Checking the status of your jobs
 
 This section shows you how to check the current status of your jobs and the SGE queues. See the [Econ Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Checking_the_status_of_your_jobs).
 
-Note that `qstat-rn` command is specific to the ECON HPC and is only available on the CS cluster if you have added the econutils module to your session. Note that you can do this by adding
+Note that `qstat-rn` command is specific to the Economics HPC and is only available on the CS HPC if you have added the `econutils` module to your session. Note that you can do this by adding:
 
 ```sh
 module load econutils
 ```
 
-to your .bashrc profile.
+to your `.bashrc` profile or the command line.
 
 ## 5.4. Deleting jobs
 
@@ -171,14 +184,14 @@ If you wish to control the parallel environment used by your cluster job there a
 - `matlabpe2014b`: parallel environment specific to Matlab. CS only support b release each year. Matlab 2015b is yet to be supported.
 - `mpi`: Old MPI interface
 - `mpich`: New MPI interface
-- `orte`: Distributed computing across nodes that clusters workers on nodes
-- `para`: Distributed computing across nodes without attempting to cluster on a given node. 
+- `orte`: Distributed computing across nodes that clusters are grouped on nodes
+- `para`: Distributed computing across nodes across nodes. 
 
 If no parallel environment is specified, the default is `orte`.
 
-Those using the `julia` parallel environment on the ECON HPC should specify `orte` or `para` depending on how you want to instantiate workers.
+Those using the `julia` parallel environment on the Economics HPC should specify `orte` or `para` depending on how you want to instantiate workers.
 
-#### Specifying  
+#### Specifying a parallel environment
 
 To specify a the parallel environment used by your cluster job add the following lines to your script. Note the second line is only necessary when using more than one node i.e. default is Default is `#$ -R n`.
 
@@ -210,17 +223,11 @@ _Note this may be slow as the programme will wait for node with enough cores to 
 #$ -R y 
 ```
 
-**Example 4**: To use a multiple CPUs arbitrarily distrbuted over a few nodes with 30 workers add the following lines to your script:
+**Example 4**: To use a multiple CPUs arbitrarily distrbuted over nodes with 30 workers add the following lines to your script:
 
 ```sh
 #$ pe para 30
 #$ -R y
-```
-
-**WARNING**: NEVER run a 'test case' with a single worker - it will crash!!!
-
-```sh
-#$ pe mpi 1 
 ```
 
 # 6. Accessing Software
@@ -236,7 +243,7 @@ module avail
 The following software is currently available via a module and is stored in `./share/apps/econ`:
 
 ```sh
-[uctpalc@vic ~]$ module avail
+[uctXXXX@vic ~]$ module avail
 
 ----------------- /share/apps/econ/Modules/3.2.10/modulefiles -----------------
 dot                       matlab/r2012b             nag/mbl6a24dnl
@@ -249,29 +256,29 @@ julia/0.4.5               modules                   use.own
 knitro/10.0.1-z           nag/mbl6a23dml
 ```
 
-Unfortunately, we are still working on developing symmetric functionality for the CS Cluster as the ECON HPC. In particular, there are some important differences for users migrating from the ECON HPC:  
+Unfortunately, we are still working on developing symmetric functionality for the CS HPC as the Economics HPC. In particular, there are some important differences for users migrating from the Economics HPC:
 
-#### No 'easy load' scripts available
+#### a. Loading modules requires more verbose commands
 
-An important difference for users migrating from the ECON HPC is that there are no scripts written that automatically load software. One example of this is MATLAB. On the Economics HPC typing `matlab` in an interactive session calls a script which automatically loads the MATLAB together with any dependencies. However, On the CS Cluster the user must load software listing dependencies. For example, to access MATLAB r2015b:
+For example, typing `matlab` on the Economics HPC in an interactive session calls a script which automatically loads the MATLAB together with any dependencies. However, on the CS HPC the user must load software listing dependencies. For example, to load MATLAB r2015b the user must type:
 
 ```sh
 module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2015b
 ```
 
-#### No Graphical User Interface (GUI) or graphics
+#### b. No Graphical User Interface (GUI) or graphics
 
-At the time of writing it is not possible to access the Graphical User iInterfaces of the software above in an interactive cluster session. Unfortunately, this is the case even if you specify `-X ` flag when logging in. 
+At the time of writing it is not possible to access the Graphical User Interfaces of the software above in an interactive cluster session. Unfortunately, this is the case even if you specify `-X ` flag when logging in. 
 
-This includes the GUI of MATLAB, Multi-Processor Stata (xstata), and any graphical packages in Julia. As such, you are limited to command line versions of these programs.
+This includes the GUI of MATLAB, Multi-Processor Stata, and any graphical packages in Julia. 
 
-## 6.2 Loading Software
+## 6.2. Loading Software
 
-Below are some details on accessing some of the most commonly used programs above.
+Below are some details on loading some of the most commonly used programs.
 
 ### 6.2.1. MATLAB
 
-To access (command line only) MATLAB run a command from the list below that corresponds to the version you wish to load.
+To load (command line only) MATLAB run a command from the list below that corresponds to the version you wish to load.
 
 ```sh
 module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2015b
@@ -283,7 +290,7 @@ module load gcc/5.2.0 nag/mbl6a23dml matlab/r2012b
 
 ## 6.2.2. Stata
 
-To access (command line only) Stata
+To load (command line only) Stata-MP
 
 ```sh
 module load stata
@@ -300,7 +307,9 @@ julia
 ```
 _Note: you will need git to manage packages_
 
-In order to use Julia's packages you will need to change the default location of you package directory (or repository) to a project store (see section 3). This is because you home drive, the default location for Julia to store its packages, has file number limit which you are likely to hit. The easiest way to manually control the location of your package directory is to to add the following lines to your `.bash_profile`.
+In order to use Julia's packages you will need to change the default location of you package directory (or repository) to a project store (see section 3). This is because your home drive, the default location for Julia to store its packages, has file number limit that Julia may hit when it install packages. 
+
+The easiest way to manually control the location of your package directory is to to add the following lines to your `.bash_profile`.
 
 ```sh
 JULIA_PKGDIR=[PATH_TO_PKGDIR]
@@ -313,18 +322,18 @@ Then reload your `.bash_profile`
 source ~/.bash_profile
 ```
 
-Then, open Julia and check that your package directory has changed and then initialize it. That is, in Julia type:
+Then, open Julia and check that your package directory has changed and initialize it. That is, in Julia type:
 
 ```julia
-Pkg.dir() # This should return the path of you package directory listed in you .bash_profile
-Pkg.init() # This initializes the package directory
+Pkg.dir() # Returns the path of you package directory
+Pkg.init() # Initializes the package directory
 ```
 
 _Note: You only need initialize the package directory it once._
 
-### Fortran
+### 6.2.4. Fortran
 
-Please see example of [Fortran Usage](https://wiki.ucl.ac.uk/pages/viewpage.action?title=CS+Cluster&spaceKey=~uctpln0#CSCluster-Fortran)
+For an example demonstrating how to run Fortran [this example](https://wiki.ucl.ac.uk/pages/viewpage.action?title=CS+Cluster&spaceKey=~uctpln0#CSCluster-Fortran)
 
 # 7. Policies and Best Practices
 
@@ -346,7 +355,7 @@ To request x GB of memory:
 -l h_vmem=xG , tmem=xG
 ```
 
-to your qsub command. Or, alternatively, add the following line to your qsub script:
+to your `qsub` command. Or, alternatively, add the following line to your `qsub` script:
 
 ```sh
 #$ -l h_vmem=xG,tmem=xG
