@@ -69,12 +69,12 @@ ssh -X uctpXXX@vic.cs.ucl.ac.uk
 
 where
 
-* The option -X allows graphics to be forwarded form the HPC to your computer (as long as you are on site at UCL).
+* The option `-X` allows graphics to be forwarded form the HPC to your computer (as long as you are on site at UCL).
 * The username "uctpXXX" is the name of the user. The username should be your UCL username
-* The text after the @ is the address of the server.
+* The text after the `@` is the address of the server.
 After you type the command, the server will ask for a password. The password should be your you CS HPC Account Password.
 
-Further platform specific ssh logon details can be found below:
+Further platform specific SSH logon details can be found below:
 
 - [Windows](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_windows/)
 - [Mac OSX](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_mac/)
@@ -92,7 +92,7 @@ While it is possible to make directories and save files in your home directory o
 
 The CS department offer backed up storage areas called **project stores**. Unlike your home directories, project stores are designed to handle intensive reading and writing of files during cluster jobs.
 
-Project stores are allocated to individual users and/or multiple user groups on request. To **request a project store* fill in the online [storage request form](http://hpc.cs.ucl.ac.uk/file_systems_storage/cluster_storage_request_form/cluster_storage_request_sent/).
+Project stores are allocated to individual users and/or multiple user groups on request. To **request a project store** fill in the online [storage request form](http://hpc.cs.ucl.ac.uk/file_systems_storage/cluster_storage_request_form/cluster_storage_request_sent/).
 
 ### 3.1.2. Accessing existing files on Economics Dept Server
 
@@ -110,7 +110,7 @@ Any SFTP service can be used to transfer files to and from the CS HPC. Popular S
 
 # 5. Accessing compute nodes: Sun Grid Engine
 
-To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Engine© (SGE) solution to keep track of what resources are avaialble. Depending on the load, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.
+To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Engine© (SGE) solution to keep track of what resources are available. Depending on the load, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.
 
 ## 5.1. Interactive sessions
 
