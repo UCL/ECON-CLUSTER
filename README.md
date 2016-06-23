@@ -17,7 +17,7 @@ Like the Economics department, the CS department has two types of account - a de
 
 If you only require command line access to the CS HPC, you only need a CS HPC account to gain access via ssh. If, however, you wish to access the CS HPC through a graphical user interface (i.e. remote desktop) you will need both a CS departmental account and a CS HPC account. 
 
-This is because the CS HPC graphical interface, the [Computer Science Remote Worker](http://www.cs.ucl.ac.uk/csrw) (CSRW), requires a CS departmental account to use it (see section 2.1 below for more details on CSRW).
+This is because the CS HPC graphical interface, the [Computer Science Remote Worker](http://www.cs.ucl.ac.uk/csrw) (CSRW), requires a CS departmental account to use it (see section 2.1 below for more details).
 
 Note that the CS HPC can only be accessed from the UCL campus. If you would like access from outside UCL you will need contact the CS support team.
 
