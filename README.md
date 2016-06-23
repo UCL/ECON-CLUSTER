@@ -11,9 +11,9 @@ Throughout this document there are links to help pages hosted by the CS departme
 * username: hpc
 * password: comic.
 
-## 1. Accessing the CS Cluster
+## 1. Accessing the CS HPC
 
-Like the Economics department, the CS department has two types of account - a departmental account and a Cluster account. 
+Like the Economics department, the CS department has two types of account - a departmental account and a HPC account. 
 
 If you only require command line access to the CS HPC, you only need a CS HPC account to gain access via ssh. If, however, you wish to access the CS HPC through a graphical user interface (i.e. remote desktop) you will need both a CS departmental account and a CS HPC account. 
 
