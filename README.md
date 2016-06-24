@@ -282,7 +282,7 @@ module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2015b
 module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2014b
 module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2014a
 module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2013b
-module load gcc/5.2.0 nag/mbl6a23dml matlab/r2012b
+module load nag/mbl6a23dml matlab/r2012b
 ```
 
 ## 6.2.2. Stata
@@ -291,7 +291,7 @@ To load (command line only) Stata-MP
 
 ```sh
 module load stata
-xstata-mp
+stata-mp
 ```
 
 ### 6.2.3. Julia
