@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+</head>
+<body>
+<h1 id="computer-science-cs-high-performance-cluster-hpc">Computer Science (CS) High-Performance Cluster (HPC)</h1>
+<p>Through the CS HPC the Economics Deparmtent has access to over 1000 <a href="http://hpc.cs.ucl.ac.uk/cluster_hardware/">nodes</a>.</p>
+<p>Below is description explaining of how members of the Economics faculty can access nodes on the Computer Science's HPC.</p>
+<p>If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk.</p>
+<p>Throughout this document there are links to help pages hosted by the CS department. If you do not already have access, please contact John McGlynn for access details: (j.mcglynn@ucl.ac.uk).</p>
+<h2 id="accessing-the-cs-hpc">1. Accessing the CS HPC</h2>
+<p>Like the Economics department, the CS department has two types of account - a departmental account and a HPC account.</p>
+<p>If you only require command line access to the CS HPC, you only need a CS HPC account to gain access via ssh. If, however, you wish to access the CS HPC through a graphical user interface (i.e. remote desktop) you will need both a CS departmental account and a CS HPC account.</p>
+<p>This is because the CS HPC graphical interface, the <a href="http://www.cs.ucl.ac.uk/csrw">Computer Science Remote Worker</a> (CSRW), requires a CS departmental account to use it (see section 2.1 below for more details).</p>
+<p>Note that the CS HPC can only be accessed from the UCL campus. If you would like access from outside UCL you will need contact the CS support team.</p>
+<h3 id="getting-registered-with-computer-science-cs-dept">1.1 Getting registered with Computer Science (CS) Dept</h3>
+<p>To get a CS account:</p>
+<ol style="list-style-type: decimal">
+<li>Fill in a Registration Form: Collect a from Room 4.20 in CS. The key fields to fill on the form are:
+<ul>
+<li>UCL username</li>
+<li>Phone Contact for user</li>
+<li>Any supervisor permissions</li>
+<li>A signature agreeing to CS terms and conditions of usage.</li>
+</ul></li>
+<li>Hand in the for to CS Helpdesk in room 4.20 in Engineering building and they will setup your account. The CS team will notify you by email when they have done so. This may take between a day and a week depending on their workload.</li>
+</ol>
+<p>Once you have CS account, they will set up a CS HPC account. You will then need to set the password either over the phone or in person at CS helpdesk office.</p>
+<p>To only apply for a CS HPC account fill in this online <a href="http://hpc.cs.ucl.ac.uk/account_application_form/">form</a>.</p>
+<p>Note that if you require both a CS account and CS HPC account you should first get a CS account.</p>
+<h1 id="connecting-to-the-cs-hpc">2. Connecting to the CS HPC</h1>
+<p>To use the CS HPC you first have to log in to a &quot;header&quot; or &quot;log on&quot; node. There are two &quot;header&quot; nodes for Economics department users on the CS HPC:</p>
+<ul>
+<li>wise.cs.ucl.ac.uk</li>
+<li>vic.cs.ucl.ac.uk</li>
+</ul>
+<p>There are two ways to access these header nodes:</p>
+<ul>
+<li>Log in and open a remote desktop session on the HPC using CS department's GUI called CSRW</li>
+<li>SSH in directly from your terminal</li>
+</ul>
+<h2 id="graphical-user-interface-gui---csrw-thinlinc">2.1. Graphical User Interface (GUI) - CSRW, Thinlinc</h2>
+<p>To use graphical tools on the CS HPC you can use the Computer Science Remote Worker (CSRW).</p>
+<p>To use the CSRW you will need a CS account and to have downloaded Thinlinc. Download and use instructions for the CS department's can be found <a href="http://www.cs.ucl.ac.uk/index.php?id=7404">here</a>.</p>
+<p><em>Note: At the time of writing, NX client - the graphical user interface used by the Economics department to access its HPC - is not supported. However, there are plans to support it in the near future.</em></p>
+<h2 id="accessing-the-cs-hpc-through-a-terminal">2.2. Accessing the CS HPC through a terminal</h2>
+<p>To gain access to the header node called <code>vic</code> from the command line using ssh type:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">ssh</span> -X uctpXXX@vic.cs.ucl.ac.uk</code></pre></div>
+<p>where</p>
+<ul>
+<li>The option <code>-X</code> allows graphics to be forwarded form the HPC to your computer (as long as you are on site at UCL).</li>
+<li>The username &quot;uctpXXX&quot; is the name of the user. The username should be your UCL username</li>
+<li>The text after the <code>@</code> is the address of the server. After you type the command, the server will ask for a password. The password should be your you CS HPC Account Password.</li>
+</ul>
+<p>Further platform specific SSH logon details can be found below:</p>
+<ul>
+<li><a href="http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_windows/">Windows</a></li>
+<li><a href="http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_mac/">Mac OSX</a></li>
+<li><a href="http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_linux/">Linux</a></li>
+</ul>
+<h1 id="general-information-about-the-cs-hpc">3. General Information about the CS HPC</h1>
+<h2 id="storage">3.1 Storage</h2>
+<p>The storage of files is quite different to the setup on the Economics HPC.</p>
+<h3 id="saving-files-and-making-directories">3.1.1. Saving files and making directories</h3>
+<p>While it is possible to make directories and save files in your home directory on the CS HPC it is important to note that these files <strong>are not backed up</strong>.</p>
+<p>The CS department offer backed up storage areas called <strong>project stores</strong>. Unlike your home directories, project stores are designed to handle intensive reading and writing of files during cluster jobs.</p>
+<p>Project stores are allocated to individual users and/or multiple user groups on request. To <strong>request a project store</strong> fill in the online <a href="http://hpc.cs.ucl.ac.uk/file_systems_storage/cluster_storage_request_form/cluster_storage_request_sent/">storage request form</a>.</p>
+<h3 id="accessing-existing-files-on-economics-dept-server">3.1.2. Accessing existing files on Economics Dept Server</h3>
+<p>On the Economics HPC it was possible to directly access files saved on the Economics department server. At the time of writing, this is not possible on the CS HPC. Therefore, if you want to access these files on the CS HPC you will have to transfer them using a SFTP clients (see section 4).</p>
+<p>Ideally, you should transfer these files to a project store.</p>
+<h2 id="software-licenses">3.2. Software licenses</h2>
+<p>See <a href="https://www.econ.ucl.ac.uk/wiki/index.php/General_system_information">Economics Wiki</a></p>
+<h1 id="transferring-files-to-and-from-the-cs-hpc">4. Transferring Files to and from the CS HPC</h1>
+<p>Any SFTP service can be used to transfer files to and from the CS HPC. Popular SFTP include <a href="https://winscp.net/eng/index.php">WinSCP</a> or <a href="https://filezilla-project.org/">FileZilla</a></p>
+<h1 id="accessing-compute-nodes-sun-grid-engine">5. Accessing compute nodes: Sun Grid Engine</h1>
+<p>To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Engine© (SGE) solution to keep track of what resources are available. Depending on the load, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.</p>
+<h2 id="interactive-sessions">5.1. Interactive sessions</h2>
+<p>This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.</p>
+<p>The CS department request that users specify options to limit memory and time logged in when logging onto the CS HPC using an interactive session. As such, to open an interactive session from your terminal once you have logged into the CS HPC, type:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">qrsh</span> -l h_vmem=1.9G, tmem=1.9G, h_rt=8:0:0</code></pre></div>
+<p>This will log you into an available node for 8hrs and allow you to use 1.9G of memory. In more detail:</p>
+<ul>
+<li><code>qrsh</code> is an alternative interactive session login command</li>
+<li><code>-l</code> is a flag for resource requests of the interactive session</li>
+<li>The resource options listed afted the <code>-l</code> flag:
+<ul>
+<li><code>h_vmem=XG, tmem=XG</code> requests X Gb of memory</li>
+<li><code>h_rt= H:M:S</code> request that the session run for <code>H</code> hours, <code>M</code> minutes, <code>S</code> seconds</li>
+</ul></li>
+</ul>
+<p><em>Note 1: From the user's persepective the <code>qrsh</code> command is an alternative to <code>qlogin</code> command currently used on the Economics HPC.</em></p>
+<p><em>Note 2: Unlike the Economics HPC there is no distinction between a batch queue and an interactive session queue.</em></p>
+<h2 id="non-interactive-sessions">5.2. Non-interactive sessions</h2>
+<p>This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.</p>
+<p>A detailed discussion of how to submit batch jobs with many useful the SGE options can be found on the <a href="https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions">Economics Wiki</a>.</p>
+<p>In addition, like an interactive session, you will have to add lines specifying hard run time and memory requirements. For example, if you submit a a qsub using a shell script you must add:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#$ -l h_rt=1:10:35  # This line specifies run time of 1 hour, 10 mins and 35 seconds</span>
+<span class="co">#$ -l tmem=1.9G, h_vmem=1.9G # This specifies 1.9 Gigabytes (can also specify M for Megabytes of k for kilobytes)</span></code></pre></div>
+<p>The job will run without it if omitted, but with restrictive defaults applied. The defaults are:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#$ -l h_rt=0:0:30  # 30 mins is default hard run time</span>
+<span class="co">#$ -l tmem=256M, h_vmem=256M # Default is 256MB</span></code></pre></div>
+<p><em>Note: Users who specify a parallel environment in their submission script please do see section 5.5 for details of parallel environments on the CS HPC.</em></p>
+<h2 id="checking-the-status-of-your-jobs">5.3. Checking the status of your jobs</h2>
+<p>This section shows you how to check the current status of your jobs and the SGE queues. See the <a href="https://www.econ.ucl.ac.uk/wiki/index.php/Checking_the_status_of_your_jobs">Econ Wiki</a>.</p>
+<p>Note that <code>qstat-rn</code> command is specific to the Economics HPC and is only available on the CS HPC if you have added the <code>econutils</code> module to your session. Note that you can do this by adding:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">module</span> load econutils</code></pre></div>
+<p>to your <code>.bashrc</code> profile or the command line.</p>
+<h2 id="deleting-jobs">5.4. Deleting jobs</h2>
+<p>To delete job with job number 123456 type:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">qdel</span> 123456</code></pre></div>
+<h2 id="sge-parallel-environments">5.5. SGE Parallel Environments</h2>
+<p>If you wish to control the parallel environment used by your cluster job there are several parallel environments on the CS HPC:</p>
+<ul>
+<li><code>smp</code>: single node with multiple workers</li>
+<li><code>matlabpe2014b</code>: parallel environment specific to Matlab. CS only support b release each year. Matlab 2015b is yet to be supported.</li>
+<li><code>mpi</code>: Old MPI interface</li>
+<li><code>mpich</code>: New MPI interface</li>
+<li><code>orte</code>: Distributed computing across nodes that clusters are grouped on nodes</li>
+<li><code>para</code>: Distributed computing across nodes across nodes.</li>
+</ul>
+<p>If no parallel environment is specified, the default is <code>orte</code>.</p>
+<p>Those using the <code>julia</code> parallel environment on the Economics HPC should specify <code>orte</code> or <code>para</code> depending on how you want to instantiate workers.</p>
+<h4 id="specifying-a-parallel-environment">Specifying a parallel environment</h4>
+<p>To specify a the parallel environment used by your cluster job add the following lines to your script. Note the second line is only necessary when using more than one node i.e. default is Default is <code>#$ -R n</code>.</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#$ pe [pe_option]::ASCIIString NumWorkers::Int  # &lt;- SGE option for parallel environment</span>
+<span class="co">#$ -R y                                         # &lt;- Resource reservation. Useful when lots of memory and/or multiple nodes requested. </span></code></pre></div>
+<p>Below are some example of lines to add to submission scripts.</p>
+<p><strong>Example 1</strong>: Use a single node with 4 workers in parallel add the following line to you script:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#$ pe smpd 4</span></code></pre></div>
+<p><strong>Example 2</strong>: To use a single node with 16 workers in parallel add the following line to your script:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#$ pe smpd 16</span></code></pre></div>
+<p><em>Note this may be slow as the programme will wait for node with enough cores to support 16 workers to be free. But it is possible.</em></p>
+<p><strong>Example 3</strong>: To use a multiple nodes clustered on few nodes with 20 workers in parallel add the following lines to your script:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#$ pe orte 20</span>
+<span class="co">#$ -R y </span></code></pre></div>
+<p><strong>Example 4</strong>: To use a multiple CPUs arbitrarily distrbuted over nodes with 30 workers add the following lines to your script:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#$ pe para 30</span>
+<span class="co">#$ -R y</span></code></pre></div>
+<h1 id="accessing-software">6. Accessing Software</h1>
+<p>Once logged on to a compute node, to access software you can use the <a href="https://www.econ.ucl.ac.uk/wiki/index.php/The_Module_Environment">modules environment</a>.</p>
+<p>To see the list of software currently available to load type:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">module</span> avail</code></pre></div>
+<p>The following software is currently available via a module and is stored in <code>./share/apps/econ</code>:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">[<span class="kw">uctXXXX@vic</span> ~]$ module avail
+
+<span class="kw">-----------------</span> /share/apps/econ/Modules/3.2.10/modulefiles -----------------
+<span class="kw">dot</span>                       matlab/r2012b             nag/mbl6a24dnl
+<span class="kw">econutils</span>                 matlab/r2013b             openmpi/gcc/1.10.0
+<span class="kw">gcc/5.2.0</span>                 matlab/r2014a             openmpi/gcc/1.8.1
+<span class="kw">git/2.8.3</span>                 matlab/r2014b             openmpi/intel/1.10.0
+<span class="kw">intel/composer/2013.1.117</span> matlab/r2015b             openmpi/intel/1.8.1
+<span class="kw">intel/composer/2015.1.133</span> module-info               stata/14
+<span class="kw">julia/0.4.5</span>               modules                   use.own
+<span class="kw">knitro/10.0.1-z</span>           nag/mbl6a23dml</code></pre></div>
+<p>Unfortunately, we are still working on developing symmetric functionality for the CS HPC as the Economics HPC. In particular, there are some important differences for users migrating from the Economics HPC:</p>
+<h4 id="a.-loading-modules-requires-more-verbose-commands">a. Loading modules requires more verbose commands</h4>
+<p>For example, typing <code>matlab</code> on the Economics HPC in an interactive session calls a script which automatically loads the MATLAB together with any dependencies. However, on the CS HPC the user must load software listing dependencies. For example, to load MATLAB r2015b the user must type:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">module</span> load gcc/5.2.0 nag/mbl6a24dnl matlab/r2015b</code></pre></div>
+<h4 id="b.-no-graphical-user-interface-gui-or-graphics">b. No Graphical User Interface (GUI) or graphics</h4>
+<p>At the time of writing it is not possible to access the Graphical User Interfaces of the software above in an interactive cluster session. Unfortunately, this is the case even if you specify <code>-X</code> flag when logging in.</p>
+<p>This includes the GUI of MATLAB, Multi-Processor Stata, and any graphical packages in Julia.</p>
+<h2 id="loading-software">6.2. Loading Software</h2>
+<p>Below are some details on loading some of the most commonly used programs.</p>
+<h3 id="matlab">6.2.1. MATLAB</h3>
+<p>To load (command line only) MATLAB run a command from the list below that corresponds to the version you wish to load.</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">module</span> load gcc/5.2.0 nag/mbl6a24dnl matlab/r2015b
+<span class="kw">module</span> load gcc/5.2.0 nag/mbl6a24dnl matlab/r2014b
+<span class="kw">module</span> load gcc/5.2.0 nag/mbl6a24dnl matlab/r2014a
+<span class="kw">module</span> load gcc/5.2.0 nag/mbl6a24dnl matlab/r2013b
+<span class="kw">module</span> load gcc/5.2.0 nag/mbl6a23dml matlab/r2012b</code></pre></div>
+<h2 id="stata">6.2.2. Stata</h2>
+<p>To load (command line only) Stata-MP</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">module</span> load stata
+<span class="kw">xstata-mp</span></code></pre></div>
+<h3 id="julia">6.2.3. Julia</h3>
+<p>To open Julia type</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">module</span> load git/2.8.3 julia
+<span class="kw">julia</span></code></pre></div>
+<p><em>Note: you will need git to manage packages</em></p>
+<p>In order to use Julia's packages you will need to change the default location of you package directory (or repository) to a project store (see section 3). This is because your home drive, the default location for Julia to store its packages, has file number limit that Julia may hit when it install packages.</p>
+<p>The easiest way to manually control the location of your package directory is to to add the following lines to your <code>.bash_profile</code>.</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ot">JULIA_PKGDIR=</span>[<span class="kw">PATH_TO_PKGDIR</span>]
+<span class="kw">export</span> <span class="ot">JULIA_PKGDIR</span></code></pre></div>
+<p>Then reload your <code>.bash_profile</code></p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">source</span> ~/.bash_profile</code></pre></div>
+<p>Then, open Julia and check that your package directory has changed and initialize it. That is, in Julia type:</p>
+<div class="sourceCode"><pre class="sourceCode julia"><code class="sourceCode julia">Pkg.dir() <span class="co"># Returns the path of you package directory</span>
+Pkg.init() <span class="co"># Initializes the package directory</span></code></pre></div>
+<p><em>Note: You only need initialize the package directory it once.</em></p>
+<h3 id="fortran">6.2.4. Fortran</h3>
+<p>For an example demonstrating how to run Fortran <a href="https://wiki.ucl.ac.uk/pages/viewpage.action?title=CS+Cluster&amp;spaceKey=~uctpln0#CSCluster-Fortran">this example</a></p>
+<h1 id="policies-and-best-practices">7. Policies and Best Practices</h1>
+<h2 id="cluster-etiquette">7.1 Cluster Etiquette</h2>
+<p><a href="http://hpc.cs.ucl.ac.uk/cluster_etiquette/">CS department cluster etiquette</a></p>
+<h2 id="memory-management">7.2 Memory Management</h2>
+<p>Please think about your job's memory usage.</p>
+<p>In order for us to make best use of the cluster, we now require you to submit your expected memory usage when you submit a job (if you leave this out, your job will not run).</p>
+<p>If your job goes over this requested limit, it will be automatically killed. The more memory you request, the longer your job will wait in the queue. Only request what you think you need.</p>
+<p>To request x GB of memory:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">-l</span> h_vmem=xG , tmem=xG</code></pre></div>
+<p>to your <code>qsub</code> command. Or, alternatively, add the following line to your <code>qsub</code> script:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#$ -l h_vmem=xG,tmem=xG</span></code></pre></div>
+<p>Most nodes have between 2 and 8GB per core. The physical machines vary from 4GB to 1TB, but if you want to run a job requiring more than 47.2GB please contact request@cs.ucl.ac.uk.</p>
+<p>For the best job throughput please request less than 1.9G. That is:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">-l</span> tmem=1.9G,h_vmem=1.9G</code></pre></div>
+<p>There are only a few machines with more than 64GB of memory. If you request more than 8G you will probably need to add a resource reservation to your job, unless the cluster is very empty.</p>
+<p>To add resource reservation to your qsub command add:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">-R</span> y</code></pre></div>
+<p>or in your qsub script, add:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="co">#$ -R y</span></code></pre></div>
+<ul>
+<li><p>Although machines have 8, 16, 24, 48, 96, 128, 256 and 1TB of memory, in reality this translates into requestable memory of 7.9, 15.7, 23.5, 62.9, 47.2, 94.4GB. i.e. if you request 16G you will not be able to run on any of the 16G machines and your job will queue for longer.</p></li>
+<li><p>Also note in a parallel environment, the amount you request is the <code>h_vmem</code> and <code>tmem</code> multiplied by the number of cpu's you request.</p></li>
+</ul>
+<p>See <a href="http://hpc.cs.ucl.ac.uk/memory_managment/">link</a> for more details.</p>
+</body>
+</html>

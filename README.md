@@ -6,10 +6,7 @@ Below is description explaining of how members of the Economics faculty can acce
 
 If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk.
 
-Throughout this document there are links to help pages hosted by the CS department. These pages are password protected. To view them enter 
-
-* username: hpc
-* password: comic.
+Throughout this document there are links to help pages hosted by the CS department. If you do not already have access, please contact John McGlynn for access details: (j.mcglynn@ucl.ac.uk). 
 
 ## 1. Accessing the CS HPC
 
