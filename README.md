@@ -30,11 +30,6 @@ The form asks for:
 * Machine you intend to log in from: **Leave Blank** 
 * Software requirements: [Optional]
 
-Leave the following fields blank - these are not required.
-
-* Research Group
-* Machine you intend to log in from 
-* Software requirements
 
 
 Once you have filled it in you will be issued with a username and password. The are the log on details you will need for BOTH you CS departmental account and CS cluster account.
