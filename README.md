@@ -1,12 +1,12 @@
 # Computer Science (CS) High-Performance Cluster (HPC)
 
-Through the CS HPC the Economics Deparmtent has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
+Through the CS HPC the Economics Department has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
 
 Below is description explaining of how members of the Economics faculty can access nodes on the Computer Science's HPC.
 
 If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk.
 
-Throughout this document there are links to help pages hosted by the CS department. These pages are password protected. To view them you must obtain the username and password either from cluster-support@cs.ucl.ac.uk or from j.mcglynn@ucl.ac.uk.
+Throughout this document there are links to help pages hosted by the CS department. These pages are password protected. To view them you must obtain the username and password from cluster-support@cs.ucl.ac.uk or from economics.it@ucl.ac.uk.
 
 ## 1. Accessing the CS HPC
 
