@@ -19,16 +19,16 @@ To get both accounts fill in this [form](http://hpc.cs.ucl.ac.uk/account_applica
 
 The form asks for:
 
-    + Name
-    + Email
-    + Contact Number
-    + ISD user account name (i.e. uctpXXX)
-    + Principal Investigator/Tutor
-    + Research Group
-    + Department
-    + Faculty 
-    + Machine you intend to log in from **[LEAVE THIS BLANK]**
-    + Software requirements
+* Name
+* Email
+* Contact Number
+* ISD user account name (i.e. uctpXXX)
+* Principal Investigator/Tutor
+* Research Group
+* Department
+* Faculty 
+* Machine you intend to log in from 
+* Software requirements
 
 Leave the 
 
