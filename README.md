@@ -19,18 +19,22 @@ To get both accounts fill in this [form](http://hpc.cs.ucl.ac.uk/account_applica
 
 The form asks for:
 
-* Name
-* Email
-* Contact Number
-* ISD user account name (i.e. uctpXXX)
-* Principal Investigator/Tutor
+* Name: [Your name here]
+* E-mail: [Your e-mail Here i.e. ]
+* Contact Number: [Your Number Here]
+* ISD user account name: [You ISD user name]
+* Principal Investigator/Tutor: [PhD students - name of supervisor]
+* Research Group: **Leave blank**
+* Department: Economics
+* Faculty: Select Social Sciences
+* Machine you intend to log in from: **Leave Blank** 
+* Software requirements: [Optional]
+
+Leave the following fields blank - these are not required.
+
 * Research Group
-* Department
-* Faculty 
 * Machine you intend to log in from 
 * Software requirements
-
-Leave the 
 
 
 Once you have filled it in you will be issued with a username and password. The are the log on details you will need for BOTH you CS departmental account and CS cluster account.
