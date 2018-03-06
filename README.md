@@ -6,11 +6,34 @@ Below is description explaining of how members of the Economics faculty can acce
 
 If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk.
 
-Throughout this document there are links to help pages hosted by the CS department. These pages are password protected. To view them you must obtain the username and password from cluster-support@cs.ucl.ac.uk or from economics.it@ucl.ac.uk.
+Throughout this document there are links to help pages hosted by the CS department. These pages are password protected. To view them you must obtain the username and password from economics.it@ucl.ac.uk.
 
 ## 1. Accessing the CS HPC
 
-Like the Economics department, the CS department has two types of account - a departmental account and a HPC account. 
+To access the CS HPC you will need:
+
+1. A CS departmental account 
+2. A CS Cluster account
+
+To get both accounts fill in this [form](http://hpc.cs.ucl.ac.uk/account_application_form/). Note that to access the form you must ask for the username and password for the website from economics.it@ucl.ac.uk.
+
+The form asks for:
+
+    + Name
+    + Email
+    + Contact Number
+    + ISD user account name (i.e. uctpXXX)
+    + Principal Investigator/Tutor
+    + Research Group
+    + Department
+    + Faculty 
+    + Machine you intend to log in from **[LEAVE THIS BLANK]**
+    + Software requirements
+
+Leave the 
+
+
+Once you have filled it in you will be issued with a username and password. The are the log on details you will need for BOTH you CS departmental account and CS cluster account.
 
 If you only require command line access to the CS HPC, you only need a CS HPC account to gain access via ssh. If, however, you wish to access the CS HPC through a graphical user interface (i.e. remote desktop) you will need both a CS departmental account and a CS HPC account. 
 
