@@ -39,9 +39,9 @@ Sections 2.1 and 2.2 below discuss these steps in turn.
 
 ## 2.1. Log in to the CS department computing system
 
-There are two different ways to do step 1 and log into the Computer Science system:
+There are two different ways to log into the Computer Science system:
 
-1. Log in and open a remote desktop session on the CS cluster using Computer Science Remote Worker (CSRW), ThinLinc 
+1. Log in using the Computer Science Remote Worker (CSRW), ThinLinc 
 2. `ssh` in from your terminal
 
 Each is discussed in more detail below.
@@ -50,15 +50,15 @@ Each is discussed in more detail below.
 
 To use start a 'remote desktop' session, use the Computer Science Remote Worker (CSRW). 
 
-To use the CSRW uses a program called ThinLinc. Download and use instructions for the CS department's can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
+The CSRW uses a program called ThinLinc. Download and use instructions for the CS department's CSRW can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
 
-Once downloaded ThinLinc for operating system, you will need your CS department account to log in. 
+Once you have downloaded ThinLinc for your operating system, you will need your CS department account to log in. 
 
 To log in, open the ThinLinc application and enter you username and password from your CS departmental account. The next step is to access the CS cluster are described in section 2.2.
 
-## 2.1.2. Accessing the CS cluster through a terminal
+### 2.1.2. Accessing the CS cluster through a terminal
 
-The other option is to `ssh` into the CS computing system at the command line by logging into `tails`. To do this, at the command line type:
+The second option is to `ssh` into the CS computing system at the command line by logging into `tails`. To do this, at the command line type:
 
 ```sh
 ssh -X uctpXXX@tails.cs.ucl.ac.uk
@@ -67,7 +67,7 @@ ssh -X uctpXXX@tails.cs.ucl.ac.uk
 where
 
 * The option `-X` allows graphics to be forwarded from the CS cluster to your computer.
-* The username "uctpXXX" is that given when you are assigned your CS account.
+* The username "uctpXXX" is that given when you are assigned your CS department account.
 * The text after the `@` is the address of the server.
 
 After you type the command, the server will ask for a password. The password should be your CS department account password.
