@@ -1,4 +1,4 @@
-# Computer Science (CS) High-Performance Cluster (HPC)
+# Computer Science (CS) High-Performance Computing (HPC) Cluster
 
 Through the CS HPC the Economics Deparmtent has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
 
