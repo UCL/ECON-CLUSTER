@@ -1,8 +1,8 @@
 # Computer Science (CS) High-Performance Computing (HPC) Cluster
 
-Through the CS HPC the Economics Deparmtent has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
+Through the CS HPC cluster the Economics Department has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
 
-Below is description explaining of how members of the Economics faculty can access nodes on the CS clsuter.
+Below is description explaining of how members of the Economics faculty can access nodes on the CS cluster.
 
 If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk.
 
