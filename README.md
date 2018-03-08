@@ -32,8 +32,8 @@ You can reset the password either over the phone or in person at CS helpdesk off
 
 Connecting to the CS cluster is a two step process. 
 
-Step 1. Log in to the CS department computing system using your CS department account
-Step 2. Once inside, connect to the CS cluster using your CS cluster account. 
+1. Log in to the CS department computing system using your CS department account
+2. Once inside, connect to the CS cluster using your CS cluster account. 
 
 Sections 2.1 and 2.2 below discuss these steps in turn.
 
