@@ -1,103 +1,98 @@
 # Computer Science (CS) High-Performance Cluster (HPC)
 
-Through the CS HPC the Economics Department has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
+Through the CS HPC the Economics Deparmtent has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
 
-Below is description explaining of how members of the Economics faculty can access nodes on the Computer Science's HPC.
+Below is description explaining of how members of the Economics faculty can access nodes on the CS clsuter.
 
 If you need help setting up or run into problems please contact CS support: cluster-support@cs.ucl.ac.uk.
 
-Throughout this document there are links to help pages hosted by the CS department. These pages are password protected. To view them you must obtain the username and password from economics.it@ucl.ac.uk.
+Throughout this document there are links to help pages hosted by the CS department. These pages are password protected. To view them you must obtain the username and password either from cluster-support@cs.ucl.ac.uk or from economics.it@ucl.ac.uk.
 
 ## 1. Accessing the CS HPC
 
-To access the CS HPC you will need:
-
-1. A CS departmental account 
-2. A CS Cluster account
-
-To get both accounts fill in this [form](http://hpc.cs.ucl.ac.uk/account_application_form/). Note that to access the form you must ask for the username and password for the website from economics.it@ucl.ac.uk.
-
-The form asks for:
-
-* Name: [Your name here]
-* E-mail: [Your e-mail Here i.e. ]
-* Contact Number: [Your Number Here]
-* ISD user account name: [You ISD user name]
-* Principal Investigator/Tutor: [PhD students - name of supervisor]
-* Research Group: **Leave blank**
-* Department: Economics
-* Faculty: Select Social Sciences
-* Machine you intend to log in from: **Leave Blank** 
-* Software requirements: [Optional]
-
-
-
-Once you have filled it in you will be issued with a username and password. The are the log on details you will need for BOTH you CS departmental account and CS cluster account.
-
-If you only require command line access to the CS HPC, you only need a CS HPC account to gain access via ssh. If, however, you wish to access the CS HPC through a graphical user interface (i.e. remote desktop) you will need both a CS departmental account and a CS HPC account. 
-
-This is because the CS HPC graphical interface, the [Computer Science Remote Worker](http://www.cs.ucl.ac.uk/csrw) (CSRW), requires a CS departmental account to use it (see section 2.1 below for more details).
-
-Note that the CS HPC can only be accessed from the UCL campus. If you would like access from outside UCL you will need contact the CS support team.
+Like the Economics department, the CS department has two types of account - a departmental account and a HPC account. 
 
 ### 1.1 Getting registered with Computer Science (CS) Dept
 
-To get a CS account: 
+To get a CS department account: 
 
-  1. Fill in a Registration Form: Collect a from Room 4.20 in CS. The key fields to fill on the form are:
-  	+ UCL username
-  	+ Phone Contact for user
-  	+ Any supervisor permissions
-  	+ A signature agreeing to CS terms and conditions of usage.
+  1. Fill in a Registration Form: Collect a form from Room 4.20 in CS dept or directly from Fatima in Economics IT. The key fields to fill on the form are:
+    + UCL username
+    + Phone Contact for user
+    + Any supervisor permissions
+    + A signature agreeing to CS terms and conditions of usage.
 
-  2. Hand in the for to CS Helpdesk in room 4.20 in Engineering building and they will setup your account. The CS team will notify you by email when they have done so. This may take between a day and a week depending on their workload.
+  2. Hand in the form to CS Helpdesk in room 4.20 in Engineering building and they will setup your account. The CS team will notify you by email when they have done so. This may take between a day and a week depending on their workload.
 
-Once you have CS account, they will set up a CS HPC account. You will then need to set the password either over the phone or in person at CS helpdesk office. 
+Once you have CS account, the CS department will automatically set up a CS cluster account for you. It will have the same user name and password by default.
 
-To only apply for a CS HPC account fill in this online [form](http://hpc.cs.ucl.ac.uk/account_application_form/). 
+You can reset the password either over the phone or in person at CS helpdesk office. 
 
-Note that if you require both a CS account and CS HPC account you should first get a CS account.
+# 2. Connecting to the CS cluster
 
-# 2. Connecting to the CS HPC
+Connecting to the CS cluster is a two step process. 
 
-To use the CS HPC you first have to log in to a "header" or "log on" node. There are two "header" nodes for Economics department users on the CS HPC:
+Step 1. Log in to the CS department computing system using your CS department account
+Step 2. Once inside, connect to the CS cluster using your CS cluster account. 
 
-* wise.cs.ucl.ac.uk
-* vic.cs.ucl.ac.uk
+Sections 2.1 and 2.2 below discuss these steps in turn.
 
-There are two ways to access these header nodes:
+## 2.1. Log in to the CS department computing system
 
-* Log in and open a remote desktop session on the HPC using CS department's GUI called CSRW 
-* SSH in directly from your terminal
+There are two different ways to do step 1 and log into the Computer Science system:
 
-## 2.1. Graphical User Interface (GUI) - CSRW, Thinlinc
+1. Log in and open a remote desktop session on the CS cluster using Computer Science Remote Worker (CSRW), ThinLinc 
+2. `ssh` in from your terminal
 
-To use graphical tools on the CS HPC you can use the Computer Science Remote Worker (CSRW). 
+Each is discussed in more detail below.
 
-To use the CSRW you will need a CS account and to have downloaded Thinlinc. Download and use instructions for the CS department's can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
+### 2.1.1. Remote Desktop Session - CSRW, ThinLinc
 
-_Note: At the time of writing, NX client - the graphical user interface used by the Economics department to access its HPC - is not supported. However, there are plans to support it in the near future._
+To use start a 'remote desktop' session, use the Computer Science Remote Worker (CSRW). 
 
-## 2.2. Accessing the CS HPC through a terminal
+To use the CSRW uses a program called ThinLinc. Download and use instructions for the CS department's can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
 
-To gain access to the header node called `vic` from the command line using ssh type:
+Once downloaded ThinLinc for operating system, you will need your CS department account to log in. 
+
+To log in, open the ThinLinc application and enter you username and password from your CS departmental account. The next step is to access the CS cluster are described in section 2.2.
+
+## 2.1.2. Accessing the CS cluster through a terminal
+
+The other option is to `ssh` into the CS computing system at the command line by logging into `tails`. To do this, at the command line type:
+
+```sh
+ssh -X uctpXXX@tails.cs.ucl.ac.uk
+```
+
+where
+
+* The option `-X` allows graphics to be forwarded from the CS cluster to your computer.
+* The username "uctpXXX" is that given when you are assigned your CS account.
+* The text after the `@` is the address of the server.
+
+After you type the command, the server will ask for a password. The password should be your CS department account password.
+
+## 2.2. Accessing the CS cluster from within CS department computing system
+
+At this point you have logged into the CS department's computing system using either CSRW as described in 2.1.1 or via `ssh` as described in 2.1.2. The next step is to log onto the CS cluster.
+
+You can do this using you username and password for your **CS cluster account**.
+
+If you accessed the computer network through ThinLinc, open a terminal (i.e. from the Applications drop down menu). If you have `ssh`'d directly into `tails` continue at the command prompt.
+
+Then, to log into the CS cluster via the `vic` log on node, at the command line prompt type:
 
 ```sh
 ssh -X uctpXXX@vic.cs.ucl.ac.uk
 ```
 
-where
+Alternatively, to log into the CS cluster via the `wise` log on node, at the command line prompt type:
 
-* The option `-X` allows graphics to be forwarded form the HPC to your computer (as long as you are on site at UCL).
-* The username "uctpXXX" is the name of the user. The username should be your UCL username
-* The text after the `@` is the address of the server.
-After you type the command, the server will ask for a password. The password should be your you CS HPC Account Password.
+```sh
+ssh -X uctpXXX@wise.cs.ucl.ac.uk
+```
 
-Further platform specific SSH logon details can be found below:
-
-- [Windows](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_windows/)
-- [Mac OSX](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_mac/)
-- [Linux](http://hpc.cs.ucl.ac.uk/cluster_for_dummies/logging_in_from_linux/) 
+There are several different log on nodes, but for your purposes one of `vic` or `wise` should suffice (i.e. if you can't log on to one for some reason, then try the other).
 
 # 3. General Information about the CS HPC
 
@@ -127,9 +122,11 @@ See [Economics Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/General_system_in
 
 Any SFTP service can be used to transfer files to and from the CS HPC. Popular SFTP include [WinSCP](https://winscp.net/eng/index.php) or [FileZilla](https://filezilla-project.org/)
 
-# 5. Accessing compute nodes: Sun Grid Engine
+# 3. Accessing compute nodes: Sun Grid Engine
 
 To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Engine© (SGE) solution to keep track of what resources are available. Depending on the load, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.
+
+There are two types of sessions
 
 ## 5.1. Interactive sessions
 
@@ -285,19 +282,13 @@ For example, typing `matlab` on the Economics HPC in an interactive session call
 module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2015b
 ```
 
-#### b. No Graphical User Interface (GUI) or graphics
-
-At the time of writing it is not possible to access the Graphical User Interfaces of the software above in an interactive cluster session. Unfortunately, this is the case even if you specify `-X ` flag when logging in. 
-
-This includes the GUI of MATLAB, Multi-Processor Stata, and any graphical packages in Julia. 
-
 ## 6.2. Loading Software
 
 Below are some details on loading some of the most commonly used programs.
 
 ### 6.2.1. MATLAB
 
-To load (command line only) MATLAB run a command from the list below that corresponds to the version you wish to load.
+To load MATLAB run a command from the list below that corresponds to the version you wish to load.
 
 ```sh
 module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2015b
@@ -307,6 +298,10 @@ module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2013b
 module load nag/mbl6a23dml matlab/r2012b
 ```
 
+If you have logged onto the CSRW and have opened a terminal and ssh'd into a head node (i.e. jake or elwood), then these commands will launch MATLAB's.
+
+[Add x-forwarding comment]
+
 ## 6.2.2. Stata
 
 To load (command line only) Stata-MP
@@ -314,6 +309,13 @@ To load (command line only) Stata-MP
 ```sh
 module load stata
 stata-mp
+```
+
+If you have logged onto the CSRW and have opened a terminal and ssh'd into a head node (i.e. jake or elwood), then you can launch Stata's GUI as follows:
+
+```sh
+module load stata
+xstata-mp
 ```
 
 ### 6.2.3. Julia
