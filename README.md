@@ -48,9 +48,9 @@ Each is discussed in more detail below.
 
 ### 2.1.1. Remote Desktop Session - CSRW, ThinLinc
 
-To use start a 'remote desktop' session, use the Computer Science Remote Worker (CSRW). 
+To use start a 'remote desktop' session, use the Computer Science Remote Worker (CSRW). The CSRW uses a program called ThinLinc. 
 
-The CSRW uses a program called ThinLinc. Download and use instructions for the CS department's CSRW can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
+* Download and use instructions for the CS department's CSRW can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
 
 Once you have downloaded ThinLinc for your operating system, you will need your CS department account to log in. 
 
@@ -78,9 +78,9 @@ At this point you have logged into the CS department's computing system using ei
 
 You can do this using you username and password for your **CS cluster account**.
 
-If you accessed the computer network through ThinLinc, open a terminal (i.e. from the Applications drop down menu). If you have `ssh`'d directly into `tails` continue at the command prompt.
+If you accessed the CS computer network through ThinLinc, open a terminal (i.e. from the Applications drop down menu). If you have `ssh`'d directly into `tails` continue at the command prompt.
 
-Then, to log into the CS cluster via the `vic` log on node, at the command line prompt type:
+To log into the CS cluster via the `vic` log on node, at the command line prompt type:
 
 ```sh
 ssh -X uctpXXX@vic.cs.ucl.ac.uk
@@ -94,33 +94,6 @@ ssh -X uctpXXX@wise.cs.ucl.ac.uk
 
 There are several different log on nodes, but for your purposes one of `vic` or `wise` should suffice (i.e. if you can't log on to one for some reason, then try the other).
 
-# 3. General Information about the CS HPC
-
-## 3.1 Storage
-
-The storage of files is quite different to the setup on the Economics HPC. 
-
-### 3.1.1. Saving files and making directories
-
-While it is possible to make directories and save files in your home directory on the CS HPC it is important to note that these files **are not backed up**.
-
-The CS department offer backed up storage areas called **project stores**. Unlike your home directories, project stores are designed to handle intensive reading and writing of files during cluster jobs.
-
-Project stores are allocated to individual users and/or multiple user groups on request. To **request a project store** fill in the online [storage request form](http://hpc.cs.ucl.ac.uk/file_systems_storage/cluster_storage_request_form/cluster_storage_request_sent/).
-
-### 3.1.2. Accessing existing files on Economics Dept Server
-
-On the Economics HPC it was possible to directly access files saved on the Economics department server. At the time of writing, this is not possible on the CS HPC. Therefore, if you want to access these files on the CS HPC you will have to transfer them using a SFTP clients (see section 4). 
-
-Ideally, you should transfer these files to a project store.
-
-## 3.2. Software licenses
-
-See [Economics Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/General_system_information)
-
-# 4.  Transferring Files to and from the CS HPC
-
-Any SFTP service can be used to transfer files to and from the CS HPC. Popular SFTP include [WinSCP](https://winscp.net/eng/index.php) or [FileZilla](https://filezilla-project.org/)
 
 # 3. Accessing compute nodes: Sun Grid Engine
 
@@ -128,73 +101,65 @@ To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Eng
 
 There are two types of sessions
 
-## 5.1. Interactive sessions
+## 3.1. Interactive sessions
 
 This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.
 
 The CS department request that users specify options to limit memory and time logged in when logging onto the CS HPC using an interactive session. As such, to open an interactive session from your terminal once you have logged into the CS HPC, type:
 
 ```sh
-qrsh -l h_vmem=1.9G, tmem=1.9G, h_rt=8:0:0
+qrsh -l h_vmem=1.9G,tmem=1.9G,h_rt=8:0:0
 ```
 
 This will log you into an available node for 8hrs and allow you to use 1.9G of memory. In more detail:
 
-- `qrsh` is an alternative interactive session login command
+- `qrsh` is an interactive session login command
 - `-l` is a flag for resource requests of the interactive session
 - The resource options listed afted the `-l` flag:
-	+ `h_vmem=XG, tmem=XG` requests X Gb of memory 
+	+ `h_vmem=XG,tmem=XG` requests X Gb of memory 
 	+ `h_rt= H:M:S` request that the session run for `H` hours, `M` minutes, `S` seconds
-
+   
 _Note 1: From the user's persepective the `qrsh` command is an alternative to `qlogin` command currently used on the Economics HPC._
 
 _Note 2: Unlike the Economics HPC there is no distinction between a batch queue and an interactive session queue._
 
-## 5.2. Non-interactive sessions
+#### User Tips 
 
-This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.
+- The SGE scheduler runs in 5 minutes cycles, so it may take a short while to be allocated a node while - be patient!
+- The smaller the memory the more nodes will be available for your work. So it is your interest not to request more memory than you absolutely need
+- If you have want to request a lot of memory (i.e. X > 2G), exclude the `h_rt` resource request from your qrsh command. For example, to request a 14G session type:
+
+```sh
+qrsh -l h_vmem=14G,tmem=14G
+```
+
+Once logged on, you need to load and open your software. See section 5 for details.
+
+## 3.2. Non-interactive sessions
+
+This section covers how to submit an non-interactive session along with examples of how to decide when it may be best to use this type of session.
 
 A detailed discussion of how to submit batch jobs with many useful the SGE options can be found on the [Economics Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions).
 
-In addition, like an interactive session, you will have to add lines specifying hard run time and memory requirements. For example, if you submit a a qsub using a shell script you must add:
+In addition, like an interactive session, you will have to add lines specifying hard run time and memory requirements. For example, if you submit a a `qsub` using a shell script you must add:
 
 ```sh
 #$ -l h_rt=1:10:35  # This line specifies run time of 1 hour, 10 mins and 35 seconds
-#$ -l tmem=1.9G, h_vmem=1.9G # This specifies 1.9 Gigabytes (can also specify M for Megabytes of k for kilobytes)
+#$ -l tmem=1.9G,h_vmem=1.9G # This specifies 1.9 Gigabytes (can also specify M for Megabytes of k for kilobytes)
 ```
 
 The job will run without it if omitted, but with restrictive defaults applied. The defaults are:
 
 ```sh
 #$ -l h_rt=0:0:30  # 30 mins is default hard run time
-#$ -l tmem=256M, h_vmem=256M # Default is 256MB
+#$ -l tmem=256M,h_vmem=256M # Default is 256MB
 ```
 
 _Note: Users who specify a parallel environment in their submission script please do see section 5.5 for details of parallel environments on the CS HPC._
 
-## 5.3. Checking the status of your jobs
+### 3.2.1 SGE Parallel Environments
 
-This section shows you how to check the current status of your jobs and the SGE queues. See the [Econ Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Checking_the_status_of_your_jobs).
-
-Note that `qstat-rn` command is specific to the Economics HPC and is only available on the CS HPC if you have added the `econutils` module to your session. Note that you can do this by adding:
-
-```sh
-module load econutils
-```
-
-to your `.bashrc` profile or the command line.
-
-## 5.4. Deleting jobs
-
-To delete job with job number 123456 type:
-
-```sh
-qdel 123456
-```
-
-## 5.5. SGE Parallel Environments
-
-If you wish to control the parallel environment used by your cluster job there are several parallel environments on the CS HPC:
+If you wish to control the parallel environment used by your cluster job there are several parallel environments on the CS cluster:
 
 - `smp`: single node with multiple workers
 - `matlabpe2014b`: parallel environment specific to Matlab. CS only support b release each year. Matlab 2015b is yet to be supported.
@@ -246,7 +211,27 @@ _Note this may be slow as the programme will wait for node with enough cores to 
 #$ -R y
 ```
 
-# 6. Accessing Software
+## 3.3. Checking the status of your jobs
+
+This section shows you how to check the current status of your jobs and the SGE queues. See the [Econ Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Checking_the_status_of_your_jobs).
+
+Note that `qstat-rn` command is specific to the Economics HPC and is only available on the CS HPC if you have added the `econutils` module to your session. Note that you can do this by adding:
+
+```sh
+module load econutils
+```
+
+to your `.bashrc` profile or the command line.
+
+## 3.4. Deleting jobs
+
+To delete job with job number 123456 type:
+
+```sh
+qdel 123456
+```
+
+# 4. Accessing Software
 
 Once logged on to a compute node, to access software you can use the [modules environment](https://www.econ.ucl.ac.uk/wiki/index.php/The_Module_Environment). 
 
@@ -282,11 +267,11 @@ For example, typing `matlab` on the Economics HPC in an interactive session call
 module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2015b
 ```
 
-## 6.2. Loading Software
+## 4.2. Loading Software
 
 Below are some details on loading some of the most commonly used programs.
 
-### 6.2.1. MATLAB
+### 4.2.1. MATLAB
 
 To load MATLAB run a command from the list below that corresponds to the version you wish to load.
 
@@ -302,7 +287,7 @@ If you have logged onto the CSRW and have opened a terminal and ssh'd into a hea
 
 [Add x-forwarding comment]
 
-## 6.2.2. Stata
+## 4.2.2. Stata
 
 To load (command line only) Stata-MP
 
@@ -318,7 +303,7 @@ module load stata
 xstata-mp
 ```
 
-### 6.2.3. Julia
+### 4.2.3. Julia
 
 To open Julia type
 
@@ -352,9 +337,37 @@ Pkg.init() # Initializes the package directory
 
 _Note: You only need initialize the package directory it once._
 
-### 6.2.4. Fortran
+### 4.2.4. Fortran
 
 For an example demonstrating how to run Fortran [this example](https://wiki.ucl.ac.uk/pages/viewpage.action?title=CS+Cluster&spaceKey=~uctpln0#CSCluster-Fortran)
+
+# 5. General Information about the CS HPC
+
+## 5.1 Storage
+
+The storage of files is quite different to the setup on the Economics HPC. 
+
+### 5.1.1. Saving files and making directories
+
+While it is possible to make directories and save files in your home directory on the CS HPC it is important to note that these files **are not backed up**.
+
+The CS department offer backed up storage areas called **project stores**. Unlike your home directories, project stores are designed to handle intensive reading and writing of files during cluster jobs.
+
+Project stores are allocated to individual users and/or multiple user groups on request. To **request a project store** fill in the online [storage request form](http://hpc.cs.ucl.ac.uk/file_systems_storage/cluster_storage_request_form/cluster_storage_request_sent/).
+
+### 5.1.2. Accessing existing files on Economics Dept Server
+
+On the Economics HPC it was possible to directly access files saved on the Economics department server. At the time of writing, this is not possible on the CS HPC. Therefore, if you want to access these files on the CS HPC you will have to transfer them using a SFTP clients (see section 4). 
+
+Ideally, you should transfer these files to a project store.
+
+## 5.2. Software licenses
+
+See [Economics Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/General_system_information)
+
+# 6.  Transferring Files to and from the CS HPC
+
+Any SFTP service can be used to transfer files to and from the CS HPC. Popular SFTP include [WinSCP](https://winscp.net/eng/index.php) or [FileZilla](https://filezilla-project.org/)
 
 # 7. Policies and Best Practices
 
