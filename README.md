@@ -141,7 +141,7 @@ This section covers how to submit an non-interactive session along with examples
 
 A detailed discussion of how to submit batch jobs with many useful the SGE options can be found on the [Economics Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions).
 
-In addition, like an interactive session, you will have to add lines specifying hard run time and memory requirements. For example, if you submit a a `qsub` using a shell script you must add:
+In addition, like an interactive session, you will have to add lines specifying hard run time and memory requirements. For example, when you submit a job, in the shell script you must add:
 
 ```sh
 #$ -l h_rt=1:10:35  # This line specifies run time of 1 hour, 10 mins and 35 seconds
