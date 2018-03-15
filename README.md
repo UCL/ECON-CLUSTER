@@ -1,6 +1,6 @@
 # Computer Science (CS) High-Performance Computing (HPC) Cluster
 
-The CS HPC cluster has over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/). The cluster is designed to run large scale computing jobs in batch mode. The cluster offers very limited graphics based interactive computing services. To efficiently use the cluster, users should set up their code so that it can be run in batch mode. Users who need graphics based interactive computing should use the smaller Economics Department cluster, ISD services, or desktop computers. 
+The CS HPC cluster has over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/). The cluster is designed to run large scale computing jobs in batch mode. The cluster offers very limited graphics based interactive computing services. To efficiently use the cluster, users should set up their code so that it can be run in batch mode. Users who primarily need graphics based interactive computing should use the smaller Economics Department cluster, ISD services, or desktop computers. 
 
 This document describes the hardware and software resources available on the cluster and provides instructions on how to access and use the cluster. It is assumed throughout that users already:
 
@@ -47,46 +47,69 @@ You can reset one or both passwords either over the phone or in person at the CS
 
 # 2. Connecting to the CS cluster
 
-There are two ways to connect to the cluster:
+There are three ways to connect to the cluster:
 
-For a connection with a graphical interface, connection to the cluster is a two step process:
-1) 
+1) Connect using ThinLinc (graphical interface)
+2) Connect using ssh (command line interface)
+3) Connect using ftp (data transfer)
 
-you can  From a computer on the UCL network (e.g. a desktop within Drayton House or the Econ HPC), you can connect directly to the CS cluster using a terminal and using ssh. See Section XX below.  , within UCL, Connecting to the CS cluster is a two step process. 
+## 2.1. Connect using ThinLinc
 
-1. Log in to the CS department computing system using your **CS department account**
-2. Once inside, connect to the CS cluster using your **CS cluster account**. 
+Connecting using ThinLinc is a two-step process:
 
-Sections 2.1 and 2.2 below discuss these steps in turn.
+1. Connect to a **Computer Science Remote Worker (CSRW)** using your **CS Department Account** username and password.
+2. Once connected, connect to the CS Cluster using your **CS Cluster Account** username and password.
 
-## 2.1. Log in to the CS department computing system
+### 2.1.1. Use ThinLinc to connect to a CSRW
 
-There are two different ways to log into the Computer Science system:
+This step uses a program called ThinLinc to create a 'remote desktop' session connecting your computer to a Computer Science Remote Worker (CSRW). To do this:
 
-1. Log in using the **Computer Science Remote Worker (CSRW)**, ThinLinc 
-2. `ssh` in from your terminal
+1. Download and install Thinlinc.
+2. Login to a CSRW using your **CS Department Account** username and password.
 
-Each is discussed in more detail below.
+Instructions to download ThinLinc and connect to a CSRW can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
 
-### 2.1.1. Remote Desktop Session - CSRW, ThinLinc
+To log in, open the ThinLinc application and enter you username and password from your **CS department account**. At this stage you are logged on to a server in the CS department. The remote desktop environment includes some applications including an web browser, a terminal window, and many others.
 
-To use start a 'remote desktop' session, use the Computer Science Remote Worker (CSRW). The CSRW uses a program called ThinLinc. 
+### 2.1.2 Connect to the CS cluster from a CSRW
 
-* Download and use instructions for the CS department's CSRW can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
+From the CSRW, open a terminal (i.e. from the Applications drop down menu). Then use ssh to logon to one of the CS Cluster 'Login Nodes'. The main login nodes are named `vic` and `wise`.
 
-Once you have downloaded ThinLinc for your operating system, you will need your CS department account to log in. 
+To login to `vic`, at the command line prompt type:
 
-To log in, open the ThinLinc application and enter you username and password from your **CS department account**. The next step is to access the CS cluster are described in section 2.2.
+```sh
+ssh -X uctpXXX@vic.cs.ucl.ac.uk
+```
 
-### 2.1.2. Accessing the CS cluster through a terminal
+Or, to login to `wise`, at the command line prompt type:
 
-The second option is to `ssh` into the CS computing system at the command line by logging into `tails`. To do this, at the command line type:
+```sh
+ssh -X uctpXXX@wise.cs.ucl.ac.uk
+```
+
+The '-X' option is required to enable 'X-forwarding' of graphics.
+
+There are several different log on nodes, but for your purposes one of `vic` or `wise` should suffice (i.e. if you can't log on to one for some reason, then try the other).
+
+### 2.2 Use ssh to connect to CS cluster
+
+For remote access (i.e. from a computer not connected to the UCL network), connecting to the CS cluster is a two step process:
+1. Connect to CS department network using your **CS Department Account** username and password.
+2. From the CS server, connect to the cluster using your **CS Cluster Account** username and password.
+
+From a computer connected to the UCL network (e.g. a desktop in Drayon House or the Econ HPC), you can skip step 1. and connect directly to the CS cluster directly using ssh.
+
+### 2.2.1 Use ssh to connect to CS Department network
+
+You can connect to several CS department servers including `tails`, `storm`, or `jet`.
+
+To connect to `tails`, open a command terminal and enter the command:
 
 ```sh
 ssh -X uctpXXX@tails.cs.ucl.ac.uk
 ```
 
-where
+Here, 
 
 * The option `-X` allows graphics to be forwarded from the CS cluster to your computer.
 * The username "uctpXXX" is that given when you are assigned your CS department account.
@@ -94,29 +117,52 @@ where
 
 After you type the command, the server will ask for a password. The password should be your CS department account password.
 
-## 2.2. Accessing the CS cluster from within CS department computing system
+To acccess `storm` or `jet`, replace `tails` with one of those options.
 
-At this point you have logged into the CS department's computing system using either CSRW as described in 2.1.1 or via `ssh` as described in 2.1.2. The next step is to log onto the CS cluster.
+### 2.2.2 Connect to the CS cluster from within CS department network
 
-You can do this using you username and password for your **CS cluster account**.
+At this point you have logged into a server within the CS department's network. The next step is to log in to a 'login' node on the CS cluster.
 
-If you accessed the CS computer network through ThinLinc, open a terminal (i.e. from the Applications drop down menu). If you have `ssh`'d directly into `tails` continue at the command prompt.
+You can do this using your username and password for your **CS cluster account**.
 
-To log into the CS cluster via the `vic` log on node, at the command line prompt type:
+At the command line prompt type:
 
 ```sh
 ssh -X uctpXXX@vic.cs.ucl.ac.uk
 ```
 
-Alternatively, to log into the CS cluster via the `wise` log on node, at the command line prompt type:
+Here,
+* The option `-X` allows graphics to be forwarded from the CS cluster to your computer.
+* The username "uctpXXX" is your **CS Cluster** username.
+* The text after the `@` is the address of the login server.
 
-```sh
-ssh -X uctpXXX@wise.cs.ucl.ac.uk
-```
+After entering the command, the system will request your password. Enter your **CS Cluster** password.
+
+Alternatively, replace `vic` with `wise`.
 
 There are several different log on nodes, but for your purposes one of `vic` or `wise` should suffice (i.e. if you can't log on to one for some reason, then try the other).
 
+## 2.3 Connect to the CS cluster using sftp
+
+To transfer files to the cluster use sftp. You can use any ftp client or you can use the command line. For command line sftp, connecting using sftp is the same as using ssh. Simply replace `ssh` with `sftp`.
+
+For example, to connect to `tails` using sftp:
+
+```sh
+sftp uctpXXX@tails.cs.ucl.ac.uk
+```
+Then, when prompted enter your password. For sftp instructions, enter `man sftp` at the command prompt or search the web.
+
 # 3. Accessing compute nodes
+
+The login nodes are used by many users and should never be used for large scale computational work. Instead, after logging in 
+to a login node, you must run your 'job' on the the 'compute nodes' of the cluster. The cluster uses a 'job scheduler' called Sun Grid Engine (SGE). Typical workflow is as follows:
+1. Logon to cluster.
+2. Transfer data and/or files to cluster (using ftp or email).
+3. Edit files or code.
+4. Write a script to submit your job to SGE.
+5. Submit the script.
+6. Download results to your local computer (using ftp or email).
 
 To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Engine (SGE) solution to keep track of what resources are available. Depending on the load, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.
 
