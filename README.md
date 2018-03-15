@@ -1,6 +1,6 @@
 # Computer Science (CS) High-Performance Computing (HPC) Cluster
 
-The CS HPC cluster has over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/). The cluster is designed to run large scale computing jobs in batch mode. The cluster offers very limited graphics based interactive computing services. To efficiently use the cluster, users should set up their code so that it can be run in batch mode. Users who primarily need graphics based interactive computing should use the smaller Economics Department cluster, ISD services, or desktop computers. 
+The CS HPC cluster has over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/). The cluster is designed to run large scale computing jobs in batch (non-interactive) mode. The cluster offers very limited graphics-based interactive computing services. To efficiently use the cluster, users should set up their code so that it can be run in batch mode. Users who primarily need graphics-based interactive computing should use the smaller Economics Department cluster, ISD services, or desktop computers. 
 
 This document describes the hardware and software resources available on the cluster and provides instructions on how to access and use the cluster. It is assumed throughout that users already:
 
@@ -162,60 +162,68 @@ to a login node, you must run your 'job' on the the 'compute nodes' of the clust
 2. Transfer data and/or files to cluster (using ftp or email).
 3. Edit files or code.
 4. Write a script to submit your job to SGE.
-5. Submit the script.
-6. Download results to your local computer (using ftp or email).
+5. Submit your job.
+6. Monitor job progress if necessary. 
+7. Download results to your local computer (using ftp or email).
 
-To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Engine (SGE) solution to keep track of what resources are available. Depending on the load, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.
+SGE allocates jobs to compute nodes and attempts to minimise congestion across users. Depending on the load on the cluster, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.
 
-There are two types of sessions:
+SGE does not currently allow for graphical interfaces. For graphics-based-interactive sessions, see Section XXX below.
 
-- Interactive
-- Non-interactive
+There are two types of SGE sessions:
+
+- Interactive (command line interactive)
+- Non-interactive (batch mode)
 
 Both are discussed in more detail below.
 
-## 3.1. Interactive sessions
+## 3.1. Interactive sessions (command line only)
 
-This section covers how to submit an interactive sessions along with examples of how to decide when it may be best to use this type of session.
+To open an interactive session, you need to specify requests for **running time** and **memory**.
 
-The CS department request that users specify options to limit memory and time logged in when logging onto the CS HPC using an interactive session. As such, to open an interactive session from your terminal once you have logged into the CS HPC, type:
+To open a session, at the command line type:
 
 ```sh
 qrsh -l h_vmem=1.9G,tmem=1.9G,h_rt=8:0:0
 ```
 
-This will log you into an available node for 8hrs and allow you to use 1.9G of memory. In more detail:
+This will log you into an available node for 8hrs and allow you to use up to 1.9G of memory. In more detail:
 
-- `qrsh` is an interactive session login command
-- `-l` is a flag for resource requests of the interactive session
-- The resource options listed afted the `-l` flag:
+- `qrsh` is the login command for an interactive session
+- `-l` is a flag for resource requests for the interactive session
+- The resource options listed after the `-l` flag are:
 	+ `h_vmem=XG,tmem=XG` requests X Gb of memory 
-	+ `h_rt= H:M:S` request that the session run for `H` hours, `M` minutes, `S` seconds
+	+ `h_rt= H:M:S` requests that the session run for `H` hours, `M` minutes, `S` seconds
    
-_Note 1: From the user's persepective the `qrsh` command is an alternative to `qlogin` command currently used on the Economics HPC._
-
-_Note 2: Unlike the Economics HPC there is no distinction between a batch queue and an interactive session queue._
+_Note 1: For further command line options for `qrsh` type: `man qrsh`_
 
 #### User Tips 
 
-- The SGE scheduler runs in 5 minutes cycles, so it may take a short while to be allocated a node while.
-- The smaller the memory the more nodes will be available for your work. So it is your interest not to request more memory than you absolutely need
-- If you have want to request a lot of memory (i.e. X > 2G), exclude the `h_rt` resource request from your `qrsh` command. For example, to request a 14G session type:
+- The SGE scheduler runs in 5 minutes cycles, so it may take a short while to be allocated a node.
+- The smaller the memory requested, the more likely your job will be allocated quickly. There are a limited number of nodes that have access to large amounts of memory. 
+- For a small job, 2G is likely to be sufficient. For Matlab, request at least 4G. 
+- If you have need to request a lot of memory (i.e. X > 2G), exclude the `h_rt` resource request from your `qrsh` command. For example, to request a 14G session type:
 
 ```sh
 qrsh -l h_vmem=14G,tmem=14G
 ```
 
-Once logged on, you need to load and open your software. See Section 4 for details.
+The `qrsh` command will log you onto one of the 'compute nodes' on the cluster. After logging on, you will need to load and open the software you require. See Section 4 for details.
 
 ## 3.2. Non-interactive sessions
 
-This section covers how to submit an non-interactive session to CS cluster.
+To run a batch job:
 
-As noted in the introductions, these instructions assume users know how to:
+1. Write a script (e.g. create a text file named `job1.sh`).
+2. Submit the script using the command `qsub`:
 
-1. Write a [shell script for the Sun Grid Engine](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions) 
-2. Run parallel jobs using your desired software from the command line. 
+```sh
+qsub job1.sh
+```
+
+Instructions for writing a script can be found at:
+
+[shell script for the Sun Grid Engine](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions) 
 
 The remainder of this section discusses the specific commands required to run on the CS cluster.
 
