@@ -2,8 +2,7 @@
 
 The CS HPC cluster has over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/). The cluster is designed to run large scale computing jobs in batch mode. The cluster offers very limited graphics based interactive computing services. To efficiently use the cluster, users should set up their code so that it can be run in batch mode. Users who need graphics based interactive computing should use the smaller Economics Department cluster, ISD services, or desktop computers. 
 
-This document describes the hardware and software resources available on the cluster and provides instructions on
-how to access and use the cluster. It is assumed throughout that users already:
+This document describes the hardware and software resources available on the cluster and provides instructions on how to access and use the cluster. It is assumed throughout that users already:
 
 1. Know basic linux shell commands
 2. Know how to write a shell script to submit batch jobs the HPC clusters
@@ -155,7 +154,7 @@ _Note 2: Unlike the Economics HPC there is no distinction between a batch queue 
 qrsh -l h_vmem=14G,tmem=14G
 ```
 
-Once logged on, you need to load and open your software. See section 5 for details.
+Once logged on, you need to load and open your software. See Section 4 for details.
 
 ## 3.2. Non-interactive sessions
 
@@ -356,7 +355,7 @@ The CS department offer backed up storage areas called **project stores**. Unlik
 
 Project stores are allocated to individual users and/or multiple user groups on request. To **request a project store** fill in the online [storage request form](http://hpc.cs.ucl.ac.uk/file_systems_storage/cluster_storage_request_form/).
 
-# 5.2. Transferring Files to and from the CS HPC
+## 5.2. Transferring Files to and from the CS HPC
 
 Any SFTP service can be used to transfer files to and from the CS HPC. Popular SFTP include [WinSCP](https://winscp.net/eng/index.php) or [FileZilla](https://filezilla-project.org/)
 
