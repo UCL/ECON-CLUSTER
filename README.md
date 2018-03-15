@@ -2,25 +2,29 @@
 
 The CS HPC cluster has over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
 
-This document describes the hardware and software resources available on the cluster and describes how to access and
-use the cluster. It is assumed throughout that users already:
+This document describes the hardware and software resources available on the cluster and provides instructions on
+how to access and use the cluster. It is assumed throughout that users already:
 
 1. Know basic linux shell commands
-2. Know how to write a shell script to submit bach jobs the HPC clusters
+2. Know how to write a shell script to submit batch jobs the HPC clusters
 3. Know how to call the desired software in batch mode
 
-These instructions describe the additional features of the CS HPC cluster users need to know. Specifically, these instructions cover:
+The cluster is designed to run large scale computing jobs in batch mode. The cluster offers very limited graphics based interactive computing services. To efficiently use the cluster, users should set up their code so that it can be run in batch mode. Users who need graphics based interactive computing should use the smaller Economics Department cluster, ISD services, or desktop computers. 
 
-1. Registering on the CS cluster
+Specifically, these instructions cover:
+
+1. Setting up an account on the CS cluster
 2. Connecting to the CS cluster
 3. Accessing and interacting with the CS cluster's resources
 4. Accessing Software
 5. Storage on the CS cluster
 6. Policies and Best Practices
 
-If you need help setting up or run into problems, please contact CS support: cluster-support@cs.ucl.ac.uk.
+If you need help setting up or run into problems, please contact CS support or ECON IT support:
+1.  CS support:    cluster-support@cs.ucl.ac.uk
+2.  ECON IT support:  ????
 
-_Note: Throughout this document there are links to help pages hosted by the CS department and the ECON Wiki. These pages are password protected. To access the CS deparment HPC pagge you must obtain the username and password either from cluster-support@cs.ucl.ac.uk or from economics.it@ucl.ac.uk._
+Note: Throughout this document there are links to help pages hosted by the CS department and the ECON Wiki. These pages are password protected. To access the CS deparment HPC pagge you must obtain the username and password either from cluster-support@cs.ucl.ac.uk or from economics.it@ucl.ac.uk._
 
 # 1. Registering on the CS cluster
 
