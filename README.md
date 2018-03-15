@@ -1,8 +1,9 @@
 # Computer Science (CS) High-Performance Computing (HPC) Cluster
 
-Through the CS HPC cluster the Economics Department has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
+The CS HPC cluster has over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
 
-Below is description explaining of how members of the Economics faculty can access nodes and run jobs on the CS cluster. It is assumed throughout that users already:
+This document describes the hardware and software resources available on the cluster and describes how to access and
+use the cluster. It is assumed throughout that users already:
 
 1. Know basic linux shell commands
 2. Know how to write a shell script to submit bach jobs the HPC clusters
