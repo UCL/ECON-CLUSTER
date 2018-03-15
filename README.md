@@ -12,7 +12,7 @@ Specifically, these instructions cover:
 
 1. Getting a CS cluster account
 2. Connecting to the CS cluster
-3. Accessing and interacting with the CS cluster's resources
+3. Accessing compute nodes
 4. Accessing software
 5. Storage on the CS cluster
 6. Policies and best practices
@@ -25,29 +25,34 @@ Note: Throughout this document there are links to help pages hosted by the CS de
 
 # 1. Getting a CS cluster account
 
-## 1.1. Getting registered with Computer Science (CS) Dept
+## 1.1. Register with Computer Science (CS) Dept
 
-Like the Economics department, the CS department has two types of account:
-    + a department account; and,
-    + a HPC account. 
+To use the cluster you will need two accounts:
+    + a CS departmental account (to allow remote access)
+    + an CS cluster account (to allow access to the cluster). 
 
-To get a **CS department account**: 
+To obtain both accounts:
 
-  1. Fill in a Registration Form: Collect a form from Room 4.20 in CS dept or directly from Fatima in Economics IT. The key fields to fill on the form are:
+  1. Fill in a Registration Form: Collect a form from Room 4.20 in the CS dept or directly from Fatima in Economics IT. The key fields to fill on the form are:
     + UCL username
     + Phone Contact for user
     + Any supervisor permissions
     + A signature agreeing to CS terms and conditions of usage.
 
-  2. Hand in the form to CS Helpdesk in room 4.20 in Engineering building and they will setup your account. The CS team will notify you by email when they have done so. This may take between a day and a week depending on their workload.
+  2. Hand in the form to the CS Helpdesk in room 4.20 in the Engineering building and they will setup your accounts. The CS team will notify you by email when they have done so. This may take between a day and a week depending on their workload.
 
-Once you have CS account, the CS department will automatically set up a **CS cluster account** for you. It will have the same user name and password by default.
+By default both accounts will have the same username and password.
 
-You can reset the password either over the phone or in person at CS helpdesk office. 
+You can reset one or both passwords either over the phone or in person at the CS helpdesk office. 
 
 # 2. Connecting to the CS cluster
 
-Connecting to the CS cluster is a two step process. 
+There are two ways to connect to the cluster:
+
+For a connection with a graphical interface, connection to the cluster is a two step process:
+1) 
+
+you can  From a computer on the UCL network (e.g. a desktop within Drayton House or the Econ HPC), you can connect directly to the CS cluster using a terminal and using ssh. See Section XX below.  , within UCL, Connecting to the CS cluster is a two step process. 
 
 1. Log in to the CS department computing system using your **CS department account**
 2. Once inside, connect to the CS cluster using your **CS cluster account**. 
