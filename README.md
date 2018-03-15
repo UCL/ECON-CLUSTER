@@ -214,7 +214,7 @@ The `qrsh` command will log you onto one of the 'compute nodes' on the cluster. 
 
 To run a batch job:
 
-1. Write a script (e.g. create a text file named `job1.sh`).
+1. Write a script detailing what job to run and requesting resources from SGE (e.g. create a text file named `job1.sh`).
 2. Submit the script using the command `qsub`:
 
 ```sh
@@ -225,27 +225,27 @@ Instructions for writing a script can be found at:
 
 [shell script for the Sun Grid Engine](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions) 
 
-The remainder of this section discusses the specific commands required to run on the CS cluster.
+The remainder of this section discusses some specific command options you can include in the job script.
 
-### Requesting memory for parallel jobs
+### Requesting memory and running time
 
-In addition to the example shell scripts, you should add lines specifying hard run time and memory requirements to your shell script. For example, when you submit a job, in the shell script you must add the following SGE flags:
+To request memory and running time, add lines like the following to your job script:
 
 ```sh
 #$ -l h_rt=1:10:35  # This line specifies run time of 1 hour, 10 mins and 35 seconds
 #$ -l tmem=1.9G,h_vmem=1.9G # This specifies 1.9 Gigabytes (can also specify M for Megabytes of k for kilobytes)
 ```
 
-The job will run without it if omitted, but with restrictive defaults applied. The defaults are:
+Without these options, the job will run with default options:
 
 ```sh
 #$ -l h_rt=0:0:30  # 30 mins is default hard run time
 #$ -l tmem=256M,h_vmem=256M # Default is 256MB
 ```
 
-### Advanced Settings: Parallel Environment
+### Requesting a parallel environment
 
-If you wish to control the parallel environment used by your cluster job there are several parallel environments on the CS cluster:
+If you are running a paralllel job that uses more than one nodes on the cluster, you need to specify the parallel environment:
 
 - `smp`: single node with multiple workers
 - `matlabpe2014b`: parallel environment specific to Matlab. CS only support b release each year. Matlab 2015b is yet to be supported.
