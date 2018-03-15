@@ -28,6 +28,7 @@ Note: Throughout this document there are links to help pages hosted by the CS de
 ## 1.1. Register with Computer Science (CS) Dept
 
 To use the cluster you will need two accounts:
+
     + a CS departmental account (to allow remote access)
     + an CS cluster account (to allow access to the cluster). 
 
