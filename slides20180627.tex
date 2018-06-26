@@ -12,7 +12,7 @@
 \date{June 27, 2018}
 
 \begin{document}
-
+\lstset{language=Pascal}
 \frame{\titlepage}
 
 
@@ -109,7 +109,7 @@ Connecting using ThinLinc is a two-step process:
 \end{frame}
 
 \begin{frame}
-\frametitle{Connect to ``tails", ``jet" or ``storm"}
+\frametitle{Step 1: connect to ``tails", ``jet" or ``storm"}
 \begin{itemize}
 \item Open an ssh client (e.g. putty) or a terminal.
 \item Type
@@ -127,27 +127,29 @@ Connecting using ThinLinc is a two-step process:
 \end{frame}
 
 \begin{frame}
-\frametitle{Connect to the CS cluster from within CS network}
-\begin{itemize}
+\frametitle{Step 2: connect to cluster}
+\begin{enumerate}
 \item Logon to the CS cluster using ssh.
 \item Type 
 \begin{itemize}
 \item ssh -X uctpXXX@vic
 \end{itemize}
 \item Enter your CS cluster password.
-\end{itemize}
+\end{enumerate}
 \end{frame}
 
 \begin{frame}
 \frametitle{Connect to the CS disk storage using sftp}
 \begin{itemize}
 \item To transfer files to cluster storage use sftp instead of ssh.
+\begin{enumerate}
 \item Open a terminal or an FTP client.
 \item Type
 \begin{itemize}
 \item sftp uctpXXX@tails.cs.ucl.ac.uk
 \end{itemize}
 \item Enter your CS department password.
+\end{enumerate}
 \item From tails, you can directly access the CS data storage. 
 \item For example, if you have previously  requested CS to 
 create a storage directory named ``Nesheim-IO", you can access this by typing:
@@ -159,11 +161,113 @@ create a storage directory named ``Nesheim-IO", you can access this by typing:
 \end{frame}
 
 \begin{frame}
-\frametitle{Log on to compute node: interactive session}
+\frametitle{Typical workflow}
+\begin{enumerate}
+\item Logon to cluster.
+\item Transfer data and/or files to cluster (using ftp or email).
+\item Edit files or code.
+\item Write a script to submit your job to SGE (Sun Grid Engine).
+\begin{itemize}
+\item SGE is the scheduler that manages allocation of jobs to nodes on the cluster.
+\end{itemize}
+\item Submit your job.
+\item Monitor job progress if necessary. 
+\item Download results to your local computer (using ftp or email).
+\end{enumerate}
+
 \end{frame}
 
 \begin{frame}
-\frametitle{Submit batch job to compute node: non-interactive session}
+\frametitle{SGE sessions: two types}
+\begin{itemize}
+\item There are two types of SGE sessions
+\begin{enumerate}
+\item Interactive sessions
+\begin{itemize}
+\item Start session with ``qrsh".
+\item Interact with compute node directly on command line.
+\item Good for developing code and testing things.
+\end{itemize}
+\item Non-interactive sessions
+\begin{itemize}
+\item Start session with ``qsub".
+\item Job runs in background.
+\item Good for running large scale, long running, or multiple jobs.
+\item Cluster is optimised for this type of job.
+\end{itemize}
+\end{enumerate}
+\item SGE jobs are command line only jobs.
+\item If you need to do GUI based interactive work, it is best to use an alternative cluster. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Interactive SGE sessions}
+
+\begin{itemize}
+\item Use the ``qrsh" command and specify \textbf{running time} and \textbf{memory}.
+\item For example, at the command line, type:
+\begin{itemize}
+\item \textbf{qrsh -l h\_vmem=1.9G,tmem=1.9G,h\_rt=8:0:0}
+\end{itemize}
+\item This command starts the session and requests 1.9 GB memory and 8 hours running time.
+\begin{itemize}
+\item `qrsh` is the login command for an interactive session.
+\item `-l` is a flag for resource requests for the interactive session.
+\end{itemize}
+\item Resource options listed after the `-l` flag are:
+\begin{enumerate}
+\item `h\_vmem=XG,tmem=XG` requests X Gb of memory 
+\item `h\_rt= H:M:S` requests that the session run for `H` hours, `M` minutes, `S` seconds
+\end{enumerate}
+\item For further command line options for `qrsh` type: `man qrsh`
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{User tips}
+\begin{itemize}
+\item After starting SGE session, you need to load and open the software you require. See below for details.
+\item It may take a short while (1 - 5 minutes) to be allocated a node.
+\item To increase chances for quick allocation, request as little memory as necessary,
+\item For a small job, 2G is likely to be sufficient. For Matlab, request at least 4G. 
+\item If you need a lot of memory (i.e. X $>$ 2G), omit the `h\_rt` option from your `qrsh` command. 
+\item For example, to request a 14G session type:
+\begin{itemize}
+\item qrsh -l h\_vmem=14G,tmem=14G
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Submitting batch jobs}
+To run a batch job:
+\begin{itemize}
+\item First, write a script (e.g.  a text file names `job1.sh`) detailing what resources to request from SGE and what commands/programs to run.
+\item Then, submit the script using the command `qsub`.
+\item For example, first create the file `job1.sh' and then type the command
+\begin{itemize}
+\item qsub job1.sh
+\end{itemize}
+\item Instructions for writing a script: \href{https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions}{job script instructions}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Some example command options to include in script}
+\begin{itemize}
+\item Request memory and running time:
+\begin{semiverbatim}
+\#\$ -l h\_rt=1:10:35
+\end{semiverbatim}
+\begin{semiverbatim}
+\#\$ -l tmem=1.9G,h\_vmem=1.9G
+\end{semiverbatim}
+\item Each line containing SGE flags starts with `\#\$`.
+\end{itemize}
+
 \end{frame}
 
 \begin{frame}
