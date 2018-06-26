@@ -1,6 +1,6 @@
 # Computer Science (CS) High-Performance Computing (HPC) Cluster
 
-The CS HPC cluster has over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/). The cluster is designed to run large scale computing jobs in batch (non-interactive) mode. The cluster offers very limited graphics-based interactive computing services. To efficiently use the cluster, users should set up their code so that it can be run in batch mode. Users who primarily need graphics-based interactive computing should use the smaller Economics Department cluster, ISD services, or desktop computers. 
+The CS HPC cluster has over 5200 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/). The cluster is designed to run large scale computing jobs in batch (non-interactive) mode. The cluster offers very limited graphics-based interactive computing services. To efficiently use the cluster, users should set up their code so that it can be run in batch mode. Users who primarily need graphics-based interactive computing should use the smaller Economics Department cluster, ISD services, or desktop computers. 
 
 This document describes the hardware and software resources available on the cluster and provides instructions on how to access and use the cluster. It is assumed throughout that users already:
 
@@ -30,7 +30,7 @@ Note: Throughout this document there are links to help pages hosted by the CS de
 To use the cluster you will need two accounts:
 
     + a CS departmental account (to allow remote access)
-    + an CS cluster account (to allow access to the cluster). 
+    + a CS cluster account (to allow access to the cluster). 
 
 To obtain both accounts:
 
@@ -363,6 +363,16 @@ module load nag/mbl6a23dml matlab/r2012b
 module load stata
 ```
 
+#### R
+
+```sh
+module load gcc/5.2.0 R/3.4.2 
+```
+
+#### Fortran
+
+For an example demonstrating how to run Fortran see [this example](https://wiki.ucl.ac.uk/pages/viewpage.action?title=CS+Cluster&spaceKey=~uctpln0#CSCluster-Fortran)
+
 #### Julia
 
 ```sh
@@ -377,23 +387,21 @@ module load git/2.8.3
 
 _Note: Julia users should speak to cluster support about getting setup on the CS cluster. Amongst other things, there are file limit, version control, library paths, and non-trivial batch-mode issues to address before job processing can begin._
 
-#### R
-
-```sh
-module load gcc/5.2.0 R/3.4.2 
-```
-
-#### Fortran
-
-For an example demonstrating how to run Fortran see [this example](https://wiki.ucl.ac.uk/pages/viewpage.action?title=CS+Cluster&spaceKey=~uctpln0#CSCluster-Fortran)
-
 #### KNITRO
 
 ```sh
 module load knitro/10.1.2-z
 ```
 
-### 4.3. Running software
+### 4.3. Running software in batch mode
+
+Once you have loaded you package you can call them in your scripts (i.e. to run MATLAB or R type  `matlab` or `R` followed commands to run software in batch mode). 
+
+_Note: You might want to add the `module load ... commands to your .bashrc file for commonly used software so they load automatically when you log on._
+
+### 4.4. Running software using GUI 
+
+If you do want to access software via limited GUIs on the CS cluster you have to log on to the `jake` or `elwood` servers. 
 
 Once you have loaded you package you can call them in either batch or interactive mode. For example, once software is loaded,
 

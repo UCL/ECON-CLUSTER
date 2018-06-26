@@ -1,199 +1,254 @@
 # Computer Science (CS) High-Performance Computing (HPC) Cluster
 
-Through the CS HPC cluster the Economics Department has access to over 1000 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/).
+The CS HPC cluster has over 5200 [nodes](http://hpc.cs.ucl.ac.uk/cluster_hardware/). The cluster is designed to run large scale computing jobs in batch (non-interactive) mode. The cluster offers very limited graphics-based interactive computing services. To efficiently use the cluster, users should set up their code so that it can be run in batch mode. Users who primarily need graphics-based interactive computing should use the smaller Economics Department cluster, ISD services, or desktop computers. 
 
-Below is description explaining of how members of the Economics faculty can access nodes and run jobs on the CS cluster. It is assumed throughout that users already:
+This document describes the hardware and software resources available on the cluster and provides instructions on how to access and use the cluster. It is assumed throughout that users already:
 
 1. Know basic linux shell commands
-2. Know how to write a shell script to submit bach jobs the HPC clusters
+2. Know how to write a shell script to submit batch jobs the HPC clusters
 3. Know how to call the desired software in batch mode
 
-These instructions describe the additional features of the CS HPC cluster users need to know. Specifically, these instructions cover:
+Specifically, these instructions cover:
 
-1. Registering on the CS cluster
+1. Getting a CS cluster account
 2. Connecting to the CS cluster
-3. Accessing and interacting with the CS cluster's resources
-4. Accessing Software
+3. Accessing compute nodes
+4. Accessing software
 5. Storage on the CS cluster
-6. Policies and Best Practices
+6. Policies and best practices
 
-If you need help setting up or run into problems, please contact CS support: cluster-support@cs.ucl.ac.uk.
+If you need help setting up or run into problems, please contact CS support or ECON IT support:
+1.  CS support:       cluster-support@cs.ucl.ac.uk
+2.  ECON IT support:  economics.it@ucl.ac.uk.
 
-_Note: Throughout this document there are links to help pages hosted by the CS department and the ECON Wiki. These pages are password protected. To access the CS deparment HPC pagge you must obtain the username and password either from cluster-support@cs.ucl.ac.uk or from economics.it@ucl.ac.uk._
+Note: Throughout this document there are links to help pages hosted by the CS department and the ECON Wiki. These pages are password protected. To access the CS deparment HPC page you must obtain the username and password either from cluster-support@cs.ucl.ac.uk or from economics.it@ucl.ac.uk.
 
-# 1. Registering on the CS cluster
+# 1. Getting a CS cluster account
 
-## 1.1. Getting registered with Computer Science (CS) Dept
+## 1.1. Register with Computer Science (CS) Dept
 
-Like the Economics department, the CS department has two types of account:
-    + a department account
-    + a HPC account. 
+To use the cluster you will need two accounts:
 
-To get a **CS department account**: 
+    + a CS departmental account (to allow remote access)
+    + a CS cluster account (to allow access to the cluster). 
 
-  1. Fill in a Registration Form: Collect a form from Room 4.20 in CS dept or directly from Fatima in Economics IT. The key fields to fill on the form are:
+To obtain both accounts:
+
+  1. Fill in a Registration Form: Collect a form from Room 4.20 in the CS dept or directly from Fatima in Economics IT. The key fields to fill on the form are:
     + UCL username
     + Phone Contact for user
     + Any supervisor permissions
     + A signature agreeing to CS terms and conditions of usage.
 
-  2. Hand in the form to CS Helpdesk in room 4.20 in Engineering building and they will setup your account. The CS team will notify you by email when they have done so. This may take between a day and a week depending on their workload.
+  2. Hand in the form to the CS Helpdesk in room 4.20 in the Engineering building and they will setup your accounts. The CS team will notify you by email when they have done so. This may take between a day and a week depending on their workload.
 
-Once you have CS account, the CS department will automatically set up a **CS cluster account** for you. It will have the same user name and password by default.
+By default both accounts will have the same username and password.
 
-You can reset the password either over the phone or in person at CS helpdesk office. 
+You can reset one or both passwords either over the phone or in person at the CS helpdesk office. 
 
 # 2. Connecting to the CS cluster
 
-Connecting to the CS cluster is a two step process. 
+There are three ways to connect to the cluster:
 
-1. Log in to the CS department computing system using your **CS department account**
-2. Once inside, connect to the CS cluster using your **CS cluster account**. 
+1) Connect using ThinLinc (graphical interface)
+2) Connect using ssh (command line interface)
+3) Connect using ftp (data transfer)
 
-Sections 2.1 and 2.2 below discuss these steps in turn.
+## 2.1. Connect using ThinLinc
 
-## 2.1. Log in to the CS department computing system
+Connecting using ThinLinc is a two-step process:
 
-There are two different ways to log into the Computer Science system:
+1. Connect to a **Computer Science Remote Worker (CSRW)** using your **CS Department Account** username and password.
+2. Once connected, connect to the CS Cluster using your **CS Cluster Account** username and password.
 
-1. Log in using the **Computer Science Remote Worker (CSRW)**, ThinLinc 
-2. `ssh` in from your terminal
+### 2.1.1. Use ThinLinc to connect to a CSRW
 
-Each is discussed in more detail below.
+This step uses a program called ThinLinc to create a 'remote desktop' session connecting your computer to a Computer Science Remote Worker (CSRW). To do this:
 
-### 2.1.1. Remote Desktop Session - CSRW, ThinLinc
+1. Download and install Thinlinc.
+2. Login to a CSRW using your **CS Department Account** username and password.
 
-To use start a 'remote desktop' session, use the Computer Science Remote Worker (CSRW). The CSRW uses a program called ThinLinc. 
+Instructions to download ThinLinc and connect to a CSRW can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
 
-* Download and use instructions for the CS department's CSRW can be found [here](http://www.cs.ucl.ac.uk/index.php?id=7404).
+To log in, open the ThinLinc application and enter you username and password from your **CS department account**. At this stage you are logged on to a server in the CS department. The remote desktop environment includes some applications including an web browser, a terminal window, and many others.
 
-Once you have downloaded ThinLinc for your operating system, you will need your CS department account to log in. 
+### 2.1.2 Connect to the CS cluster from a CSRW
 
-To log in, open the ThinLinc application and enter you username and password from your **CS department account**. 
+From the CSRW, open a terminal (i.e. from the Applications drop down menu). Then use ssh to logon to one of the CS Cluster 'Login Nodes'. The main login nodes are named `vic` and `wise`.
 
-You will have the choice of a linux (CentOS) or windows desktop. 
-
-The next step is to access the CS cluster.
-
-### 2.1.2. Accessing the CS computer network via the terminal
-
-As an alternative to CSRW, you can open a terminal and `ssh` into the CS computing network at the command line by logging into `tails`. To do this, at the command line type:
-
-```sh
-ssh -X uctpXXX@tails.cs.ucl.ac.uk
-```
-
-where
-
-* The option `-X` allows graphics to be forwarded from the CS cluster to your computer.
-* The username "uctpXXX" is that given when you are assigned your CS department account.
-* The text after the `@` is the address of the server.
-
-If you are logging in directly from the command line on your PC, after you type the command the server will ask for a password. The password should be your CS department account password.
-
-You are now logged into the CS department computers, *not* the CS cluster.
-
-## 2.2. Accessing the CS cluster from within CS department computing system
-
-At this point you have logged into the CS department's computing system using either CSRW as described in 2.1.1 or via `ssh` as described in 2.1.2. The next step is to log onto the CS cluster.
-
-You can do this using you username and password for your **CS cluster account**.
-
-If you accessed the CS computer network through ThinLinc, open a terminal (i.e. from the Applications drop down menu). If you have `ssh`'d directly into `tails` continue at the command prompt.
-
-To log into the CS cluster via the `vic` log on node, at the command line prompt type:
+To login to `vic`, at the command line prompt type:
 
 ```sh
 ssh -X uctpXXX@vic.cs.ucl.ac.uk
 ```
 
-then enter your password. You are not logged into the CS cluster and are ready to run jobs.
-
-If, for some reason you cannot log into `vic`, there are other log on nodes you can use. On alternative is to log into the CS cluster via the `wise` log on node.
-
-To log on via wise at the command line prompt type:
+Or, to login to `wise`, at the command line prompt type:
 
 ```sh
 ssh -X uctpXXX@wise.cs.ucl.ac.uk
 ```
-then type your password.
 
-There are several different log on nodes, but for your purposes one of `vic` or `wise` should suffice (i.e. if you can't log on to one for some reason, then try the other). It doesn't matter which you use.
+The '-X' option is required to enable 'X-forwarding' of graphics.
+
+There are several different log on nodes, but for your purposes one of `vic` or `wise` should suffice (i.e. if you can't log on to one for some reason, then try the other).
+
+### 2.2 Use ssh to connect to CS cluster
+
+For remote access (i.e. from a computer not connected to the UCL network), connecting to the CS cluster is a two step process:
+1. Connect to CS department network using your **CS Department Account** username and password.
+2. From the CS server, connect to the cluster using your **CS Cluster Account** username and password.
+
+From a computer connected to the UCL network (e.g. a desktop in Drayon House or the Econ HPC), you can skip step 1. and connect directly to the CS cluster directly using ssh.
+
+### 2.2.1 Use ssh to connect to CS Department network
+
+You can connect to several CS department servers including `tails`, `storm`, or `jet`.
+
+To connect to `tails`, open a command terminal and enter the command:
+
+```sh
+ssh -X uctpXXX@tails.cs.ucl.ac.uk
+```
+
+Here, 
+
+* The option `-X` allows graphics to be forwarded from the CS cluster to your computer.
+* The username "uctpXXX" is that given when you are assigned your CS department account.
+* The text after the `@` is the address of the server.
+
+After you type the command, the server will ask for a password. The password should be your CS department account password.
+
+To acccess `storm` or `jet`, replace `tails` with one of those options.
+
+### 2.2.2 Connect to the CS cluster from within CS department network
+
+At this point you have logged into a server within the CS department's network. The next step is to log in to a 'login' node on the CS cluster.
+
+You can do this using your username and password for your **CS cluster account**.
+
+At the command line prompt type:
+
+```sh
+ssh -X uctpXXX@vic.cs.ucl.ac.uk
+```
+
+Here,
+* The option `-X` allows graphics to be forwarded from the CS cluster to your computer.
+* The username "uctpXXX" is your **CS Cluster** username.
+* The text after the `@` is the address of the login server.
+
+After entering the command, the system will request your password. Enter your **CS Cluster** password.
+
+Alternatively, replace `vic` with `wise`.
+
+There are several different log on nodes, but for your purposes one of `vic` or `wise` should suffice (i.e. if you can't log on to one for some reason, then try the other).
+
+## 2.3 Connect to the CS cluster using sftp
+
+To transfer files to the cluster use sftp. You can use any ftp client or you can use the command line. For command line sftp, connecting using sftp is the same as using ssh. Simply replace `ssh` with `sftp`.
+
+For example, to connect to `tails` using sftp:
+
+```sh
+sftp uctpXXX@tails.cs.ucl.ac.uk
+```
+Then, when prompted enter your password. For sftp instructions, enter `man sftp` at the command prompt or search the web.
 
 # 3. Accessing compute nodes
 
-The CS cluster is primarily for non-interactive sessions designed for command line or batch processing.
+The login nodes are used by many users and should never be used for large scale computational work. Instead, after logging in 
+to a login node, you must run your 'job' on the the 'compute nodes' of the cluster. The cluster uses a 'job scheduler' called Sun Grid Engine (SGE). Typical workflow is as follows:
+1. Logon to cluster.
+2. Transfer data and/or files to cluster (using ftp or email).
+3. Edit files or code.
+4. Write a script to submit your job to SGE.
+5. Submit your job.
+6. Monitor job progress if necessary. 
+7. Download results to your local computer (using ftp or email).
 
-The CS cluster is not currently designed for 'interactive user sessions'. For example, users cannot `qlogin` using remote desktop software, ThinLinc and then access Stata, R, MATLAB GUIs for multi-core processing on the CS cluster. 
+SGE allocates jobs to compute nodes and attempts to minimise congestion across users. Depending on the load on the cluster, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.
 
-If users need a GUI for interactive code development, data processing, memory usage testing, or graphics with some multi-core processing, they should continue to use the Economics HPC.
+SGE does not currently allow for graphical interfaces. For graphics-based-interactive sessions, see Section XXX below.
 
-We are looking to setup additional GUI servers on the CS cluster in the future but funding is not currently available. See section 4.4. for a description of the limited GUI services the CS HPC currently offers.
+There are two types of SGE sessions:
 
-## 3.1 Non-interactive sessions
+- Interactive (command line interactive)
+- Non-interactive (batch mode)
 
-This section covers how to submit an non-interactive session to CS cluster.
+Both are discussed in more detail below.
 
-To ensure your jobs run as quickly as possible the cluster uses the Sun Grid Engine (SGE) solution to keep track of what resources are available. Depending on the load, the jobs you submit will either be instantly scheduled to a compute node or placed in a queue until the resources requested become available.
+## 3.1. Interactive sessions (command line only)
 
-As noted in the introduction, these instructions assume users know how to:
+To open an interactive session, you need to specify requests for **running time** and **memory**.
 
-1. Write a [shell script for the Sun Grid Engine](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions). 
-2. Run parallel jobs using your desired software from the command line. 
+To open a session, at the command line type:
 
-The remainder of this sub-section discusses the specific commands required to run on the CS cluster.
+```sh
+qrsh -l h_vmem=1.9G,tmem=1.9G,h_rt=8:0:0
+```
 
-### 3.1.1. Loading software for use in shell script
+This will log you into an available node for 8hrs and allow you to use up to 1.9G of memory. In more detail:
 
-To call software in your script it must first be loaded.  On the CS clsuter users must call software together with their dependencies (i.e. compilers, other software like Github or NAG).
+- `qrsh` is the login command for an interactive session
+- `-l` is a flag for resource requests for the interactive session
+- The resource options listed after the `-l` flag are:
+	+ `h_vmem=XG,tmem=XG` requests X Gb of memory 
+	+ `h_rt= H:M:S` requests that the session run for `H` hours, `M` minutes, `S` seconds
+   
+_Note 1: For further command line options for `qrsh` type: `man qrsh`_
 
-Users can do this in two ways:
+#### User Tips 
 
-1) Load the software in their shell script
-2) Add it to their start up script (i.e. `.bashrc` file in their home directory of the CS cluster) 
+- The SGE scheduler runs in 5 minutes cycles, so it may take a short while to be allocated a node.
+- The smaller the memory requested, the more likely your job will be allocated quickly. There are a limited number of nodes that have access to large amounts of memory. 
+- For a small job, 2G is likely to be sufficient. For Matlab, request at least 4G. 
+- If you have need to request a lot of memory (i.e. X > 2G), exclude the `h_rt` resource request from your `qrsh` command. For example, to request a 14G session type:
 
-The commands needed to load and access software on the CS cluster are discussed in detail in Section 4.
+```sh
+qrsh -l h_vmem=14G,tmem=14G
+```
 
-### 3.1.2. Requesting memory for parallel jobs
+The `qrsh` command will log you onto one of the 'compute nodes' on the cluster. After logging on, you will need to load and open the software you require. See Section 4 for details.
 
-In addition to the example shell scripts, you should add lines specifying hard run time and memory requirements to your shell script. For example, when you submit a job, in the shell script you must add the following SGE flags:
+## 3.2. Non-interactive sessions
+
+To run a batch job:
+
+1. Write a script detailing what job to run and requesting resources from SGE (e.g. create a text file named `job1.sh`).
+2. Submit the script using the command `qsub`:
+
+```sh
+qsub job1.sh
+```
+
+Instructions for writing a script can be found at:
+
+[shell script for the Sun Grid Engine](https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions) 
+
+The remainder of this section discusses some specific command options you can include in the job script.
+
+### Requesting memory and running time
+
+To request memory and running time, add lines like the following to your job script:
 
 ```sh
 #$ -l h_rt=1:10:35  # This line specifies run time of 1 hour, 10 mins and 35 seconds
 #$ -l tmem=1.9G,h_vmem=1.9G # This specifies 1.9 Gigabytes (can also specify M for Megabytes of k for kilobytes)
 ```
 
-where:
-
-- `-l` is a flag for resource requests of the interactive session
-- The resource options listed afted the `-l` flag:
-  + `h_vmem=XG,tmem=XG` requests X Gb of memory 
-  + `h_rt= H:M:S` request that the session run for `H` hours, `M` minutes, `S` seconds
-
-The job will run without it if omitted, but with restrictive defaults applied. The defaults are:
+Without these options, the job will run with default options:
 
 ```sh
 #$ -l h_rt=0:0:30  # 30 mins is default hard run time
 #$ -l tmem=256M,h_vmem=256M # Default is 256MB
 ```
 
-#### 3.1.3. General user tips
+### Requesting a parallel environment
 
-- The SGE scheduler runs in 5 minutes cycles, so it may take a short while to be allocated a node while.
-- The smaller the memory the more nodes will be available for your work. So **it is your interest not to request more memory than you absolutely need**.
-- Learn how to submit task array jobs. They are much more efficient for you and the system (i.e. MATLAB in task-array mode needs less memory!).
-- Optimise your code **before** using the cluster (i.e. use profilers).
-- Check memory requirements of your code **before** using the cluster.
-- Pay attention to how much data you are moving around per process. There is an overhead and it can undo the benefits of parallelisation
-- Do not read and write lots of data to disk: this can be slow on the CS cluster.
-- Only save information to project stores, home directory are not designed for this purpose on the CS cluster.
-
-### 3.1.4. Advanced Settings: Parallel Environment
-
-If you wish to control the parallel environment used by your cluster job there are several parallel environments on the CS cluster:
+If you are running a paralllel job that uses more than one nodes on the cluster, you need to specify the parallel environment:
 
 - `smp`: single node with multiple workers
-- `matlabpe2014b`: parallel environment specific to Matlab. CS only support `b` release each year. The Matlab 2015b parallel environment is yet to be supported.
+- `matlabpe2014b`: parallel environment specific to Matlab. CS only support b release each year. Matlab 2015b is yet to be supported.
 - `mpi`: Old MPI interface
 - `mpich`: New MPI interface
 - `orte`: Distributed computing across nodes, but tries to cluster processes on nodes
@@ -238,7 +293,7 @@ _Note this may be slow as the programme will wait for node with enough cores to 
 #$ -R y
 ```
 
-## 3.2. Checking the status of your jobs
+## 3.3. Checking the status of your jobs
 
 This section shows you how to check the current status of your jobs and the SGE queues. See the [Econ Wiki](https://www.econ.ucl.ac.uk/wiki/index.php/Checking_the_status_of_your_jobs).
 
@@ -250,7 +305,7 @@ module load econutils
 
 to your `.bashrc` profile or the command line.
 
-## 3.3. Deleting jobs
+## 3.4. Deleting jobs
 
 To delete job with job number 123456 type:
 
@@ -348,18 +403,13 @@ _Note: You might want to add the `module load ... commands to your .bashrc file 
 
 If you do want to access software via limited GUIs on the CS cluster you have to log on to the `jake` or `elwood` servers. 
 
-To log on to `jake` or `elwood` from inside CSRW, or after logging onto `tails` type:
+Once you have loaded you package you can call them in either batch or interactive mode. For example, once software is loaded,
 
-```sh
-ssh -X jake
-```
-or 
+- to open an interactive stata from terminal from inside CSRW type: `xstata-mp`
+- to open an interactive MATLAB type: `matlab` 
+- to open an interactive R type: `R` 
 
-```sh
-ssh -X elwood
-```
-
-Then load and call software as described above.
+_Note: You might want to add the `module load ... commands to your .bashrc file for commonly used software so they load automatically when you log on._
 
 # 5. Storage
 
@@ -373,7 +423,7 @@ The CS department offer backed up storage areas called **project stores**. Unlik
 
 Project stores are allocated to individual users and/or multiple user groups on request. To **request a project store** fill in the online [storage request form](http://hpc.cs.ucl.ac.uk/file_systems_storage/cluster_storage_request_form/).
 
-# 5.2. Transferring Files to and from the CS HPC
+## 5.2. Transferring Files to and from the CS HPC
 
 Any SFTP service can be used to transfer files to and from the CS HPC. Popular SFTP include [WinSCP](https://winscp.net/eng/index.php) or [FileZilla](https://filezilla-project.org/)
 
