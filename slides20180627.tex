@@ -2,6 +2,8 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{listings}
+\usepackage{geometry,graphicx}
+
 \usetheme{Madrid}
 \usecolortheme{beaver}
 % \usepackage{beamerthemesplit} // Activate for custom appearance
@@ -26,7 +28,8 @@
 \item \textbf{Limited graphics}-based interactive computing services. 
 \end{itemize}
 \item Users should set up their code to run in batch mode.
-\item Users who primarily need graphics-based interactive computing should use Economics Department cluster, ISD services, or desktop computers. 
+\item Users who primarily need graphics-based interactive computing should use Economics Department cluster, ISD services, or desktop computers.
+\item Users will benefit from learning some basix unix commands. 
 \end{itemize}
 \end{frame}
 
@@ -75,13 +78,13 @@ There are three ways to connect to the cluster:
 \end{frame}
 
 \begin{frame}
-\frametitle{Connect using ThinLinc}
+\frametitle{Connection option 1: ThinLinc}
 
 Connecting using ThinLinc is a two-step process:
 \begin{enumerate}
 \item Connect to a \textbf{CSRW} (Computer Science Remote Worker) using your \textbf{CS Department Account} username and password.
 \begin{itemize}
-\item \textcolor{blue}{\href{http://www.cs.ucl.ac.uk/index.php?id=7404}{Instructions to dowload Thinlinc}}.
+\item \textcolor{blue}{\href{http://www.cs.ucl.ac.uk/index.php?id=7404}{Instructions to download Thinlinc}}.
 \end{itemize}
 \item Then connect to one of the cluster login nodes (``vic" or ``wise") using your \textbf{CS Cluster Account} username and password.
 \begin{enumerate}
@@ -97,19 +100,19 @@ Connecting using ThinLinc is a two-step process:
 \end{frame}
 
 \begin{frame}
-\frametitle{Connect using ssh}
+\frametitle{Connection option 2: ssh}
 \begin{itemize}
 \item For remote access (i.e. when not connected to UCL network), connecting is a two step process:
 \begin{enumerate}
 \item Connect to ``tails", ``storm" or ``jet" using your \textbf{CS Department Account} username and password.
 \item Connect to the cluster using your \textbf{CS Cluster Account} username and password.
 \end{enumerate}
-\item For access from within the UCL network (e.g. a desktop in Drayon House or the Econ HPC), skip step 1.
+\item For access from within the UCL network (e.g. a desktop in Drayton House or the Econ HPC), skip step 1.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Step 1: connect to ``tails", ``jet" or ``storm"}
+\frametitle{Option 2 Step 1: ssh to ``tails", ``jet" or ``storm"}
 \begin{itemize}
 \item Open an ssh client (e.g. putty) or a terminal.
 \item Type
@@ -127,7 +130,7 @@ Connecting using ThinLinc is a two-step process:
 \end{frame}
 
 \begin{frame}
-\frametitle{Step 2: connect to cluster}
+\frametitle{Option 2 Step 2: ssh to cluster}
 \begin{enumerate}
 \item Logon to the CS cluster using ssh.
 \item Type 
@@ -139,7 +142,7 @@ Connecting using ThinLinc is a two-step process:
 \end{frame}
 
 \begin{frame}
-\frametitle{Connect to the CS disk storage using sftp}
+\frametitle{Connection option 3: sftp (for file transfer)}
 \begin{itemize}
 \item To transfer files to cluster storage use sftp instead of ssh.
 \begin{enumerate}
@@ -152,11 +155,11 @@ Connecting using ThinLinc is a two-step process:
 \end{enumerate}
 \item From tails, you can directly access the CS data storage. 
 \item For example, if you have previously  requested CS to 
-create a storage directory named ``Nesheim-IO", you can access this by typing:
+create a storage directory named ``PROJECT\_X", you can access this by typing:
 \begin{itemize}
-\item cd /slash/economics/research/Nesheim-IO
+\item cd /slash/economics/research/PROJECT\_X
 \end{itemize}
-\item See below requesting CS data storage.
+\item We discuss requesting CS data storage below.
 \end{itemize}
 \end{frame}
 
@@ -251,7 +254,7 @@ To run a batch job:
 \begin{itemize}
 \item qsub job1.sh
 \end{itemize}
-\item Instructions for writing a script: \href{https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions}{job script instructions}.
+\item Instructions for writing a script: \textcolor{blue}{\href{https://www.econ.ucl.ac.uk/wiki/index.php/Non-interactive_sessions}{job script instructions}}.
 \end{itemize}
 \end{frame}
 
@@ -262,6 +265,7 @@ To run a batch job:
 \begin{semiverbatim}
 \#\$ -l h\_rt=1:10:35
 \end{semiverbatim}
+\vspace{-0.4cm}
 \begin{semiverbatim}
 \#\$ -l tmem=1.9G,h\_vmem=1.9G
 \end{semiverbatim}
@@ -270,44 +274,269 @@ To run a batch job:
 
 \end{frame}
 
-\begin{frame}
-\frametitle{Submit batch job to compute node: non-interactive session}
+\begin{frame}[fragile]
+\frametitle{Requesting a parallel environment}
+\begin{itemize}
+\item To run a job using more than one worker, you need either to specify a parallel environment or submit multiple jobs using ``tasks".
+\begin{itemize}
+\item We will discuss using ``tasks" later.
+\end{itemize}
+\item To specify the parallel environment, add the following lines to your shell script: \vspace{.2cm}
+\begin{semiverbatim}
+\#\$ pe [pe\_option] [NumWorkers]  
+\end{semiverbatim}
+\vspace{-0.4cm}
+\begin{semiverbatim}
+\#\$ -R y  \# 
+\end{semiverbatim}
+\begin{itemize}
+\item replace [pe\_option] option from next slide
+\item Replace [NumWorkers] with an integer.
+\item Second line reserves resources (needed when using multiple nodes).
+\end{itemize}
+\item In most cases the best pe\_option will be one of `orte`, `smp`, or `matlabpe2014b`
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Parallel environment options}
+\begin{itemize}
+\item Options for parallel environments are
+\begin{itemize}
+\item `smp`: single node with multiple workers
+\item `matlabpe2014b`: parallel environment specific to Matlab. CS only support b release each year. Matlab 2015b is yet to be supported.
+\item `mpi`: Old MPI interface
+\item `mpich`: New MPI interface
+\item `orte`: Distributed computing across nodes, but tries to cluster processes on nodes
+\item `para`: Distributed computing across nodes, no clustering of processes
+\end{itemize}
+\item Default option is `orte`.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Examples}
+\begin{itemize}
+\item Example 1: Use a single node with 4 workers
+\begin{semiverbatim}
+\#\$ pe smp 4
+\end{semiverbatim}
+\item Example 2: Use a single node with 16 workers
+\begin{semiverbatim}
+\#\$ pe smp 16
+\end{semiverbatim}
+\begin{itemize}
+\item This example may ``hang" in the queue for a long time; the scheduler will have to wait until a node with 16 cores is free.
+\end{itemize}
+\item Example 3: 20 workers clustered on a few nodes
+\begin{semiverbatim}
+\#\$ pe orte 20
+\end{semiverbatim}
+\vspace{-0.4cm}
+\begin{semiverbatim}
+\#\$ -R y 
+\end{semiverbatim}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Job status}
-\end{frame}
+\frametitle{Checking job status or deleting jobs}
 
-\begin{frame}
-\frametitle{Disk storage}
+\begin{itemize}
+\item For more details see \textcolor{blue}{\href{https://www.econ.ucl.ac.uk/wiki/index.php/Checking_the_status_of_your_jobs}{Econ wiki}}.
+\item You can use the command `qstat` or `qstat-rn`.
+\item Note: `qstat-rn` is only available if you have loaded the module `econutils` by typing
+\begin{semiverbatim}
+module load econutils
+\end{semiverbatim}
+\item To delete a job with id 123456, type
+\begin{semiverbatim}
+qdel 123456
+\end{semiverbatim}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Software available}
-\end{frame}
-
-\begin{frame}
-\frametitle{Memory management}
-\end{frame}
-
-\begin{frame}
-\frametitle{Graphics on jake or elwood}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Cluster rules}
 \begin{itemize}
-\item Never run jobs on head nodes (wise, vic, tails)
+\item To find full details of software available on cluster go to cluster webpage or contact cluster support.
+\item The main software packages for economics are most easily used by using a module environment. See 
+\textcolor{blue}{\href{https://www.econ.ucl.ac.uk/wiki/index.php/The_Module_Environment}{module environments}}. 
+\item To see list of software currently available type \vspace{0.2cm}
+\begin{semiverbatim}
+module avail
+\end{semiverbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Software available}
+\begin{itemize}
+\item Current list is 
+\begin{table}[htdp]
+\begin{center}
+\resizebox{0.9 \textwidth}{!}{
+\begin{tabular}{lll}
+dot & matlab/r2012b & openmpi/gcc/1.10.0 \\
+econutils & matlab/r2013b & openmpit/gcc/1.8.1 \\
+gcc/5.2.0 & matlab/r2014a & openmpi/intel/1.10.0 \\
+gcc/6.2.1 & matlab/r2014b & openmpi/intel/1.8.1 \\
+git/2.8.3 & matlab/r2015b & R/3.4.2 \\
+intel/composer/2013.1.117 & module-info & stata/14 \\
+intel/composer/2015.1.133 & modules & totalview/8.15.7-6 \\
+julia/0.4.5 & nag/fll6i25dc & use.own \\
+knitro/10.0.1-z & nag/mbl6a23dml & \\
+knitro/10.1.2-z & nag/mbl6a24dnl & 
+\end{tabular}}
+\end{center}
+\label{default}
+\end{table}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Loading modules}
+\begin{itemize}
+\item Each software package depends on a large number of files.
+\item Loading the module file sets ``environment" variables on the system so that the software will run correctly.
+\item To use modules, they must be loaded on every compute node on which you are running.
+\begin{itemize}
+\item Interactive sessions: first start the interactive session using `qrsh`, then load the modules you need.
+\item Non-interactive sessions: include the `module load` commands in your batch job script or create a `.bash\_rc` file to automatically load them at startup.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Examples}
+\begin{itemize}
+\item MATLAB \vspace{0.2cm}
+\begin{semiverbatim}
+module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2015b
+\end{semiverbatim} \vspace{-0.4cm}
+\begin{semiverbatim}
+module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2014b
+\end{semiverbatim} \vspace{-0.4cm}
+\begin{semiverbatim}
+module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2014a
+\end{semiverbatim} \vspace{-0.4cm}
+\begin{semiverbatim}
+module load gcc/5.2.0 nag/mbl6a24dnl matlab/r2013b
+\end{semiverbatim} \vspace{-0.4cm}
+\begin{semiverbatim}
+module load nag/mbl6a23dml matlab/r2012b
+\end{semiverbatim} 
+\item Stata \vspace{0.2cm}
+\begin{semiverbatim}
+module load stata
+\end{semiverbatim} 
+\item R \vspace{0.2cm}
+\begin{semiverbatim}
+module load gcc/5.2.0 R/3.4.2 
+\end{semiverbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Examples}
+\begin{itemize}
+\item Fortran \vspace{0.2cm}
+\begin{semiverbatim}
+module load gcc/5.2.0 nag/fll6i25dc 
+\end{semiverbatim}
+\vspace{-0.4cm}
+\begin{semiverbatim}
+module load intel/composer/2015.1.133
+\end{semiverbatim} \vspace{-0.4cm}
+\begin{semiverbatim}
+module load openmpi/intel/1.10.0 totalview
+\end{semiverbatim}
+\item Julia
+\vspace{0.2cm}
+\begin{semiverbatim}
+module load git/2.8.3 julia
+\end{semiverbatim}
+\item Note: Julia users should speak to cluster support about getting setup on the CS cluster. Amongst other things, there are file limit, version control, library paths, and non-trivial batch-mode issues to address before job processing can begin.
+\item KNITRO
+\vspace{0.2cm}
+\begin{semiverbatim}
+module load knitro/10.1.2-z
+\end{semiverbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Running software}
+\begin{itemize}
+\item Interactive sessions (command line versions)
+\begin{itemize}
+\item Type the relevant command: `matlab -nodisplay`, `stata-mp`, `R`, `ifort`.
+\end{itemize}
+\item Non-interactive sessions
+\begin{itemize}
+\item Add the relevant command to your job script: `matlab -nodisplay`, `stata-mp`, `R`, `ifort`.
+\item See examples below.
+\end{itemize}
+\item Interactive GUI sessions
+\begin{itemize}
+\item First logon to `jake` or `elwood` using ssh with the `-X` option for x-forwarding of graphics
+\begin{semiverbatim}
+ssh -X uctpXXX@jake
+\end{semiverbatim}
+\item Load the relevant modules.
+\item Start your program using `matlab`, `xstata-mp`, `R`, `ifort`
+\item Note: There are only two servers with x-forwarding enabled. You do not need to use SGE to access these servers. They can only be used for small scale temporary jobs.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Disk storage}
+\begin{itemize}
+\item All accounts have a limited amount of `local space` for storing working files. This space is limited ( a few gigabytes), is not backed up, and should not be used to store important outputs or large datasets.
+\item Large scale storage (project store) with back ups is available on the CS SAN (storage area network).
+\item Storage can be made accessible to individuals or to groups. 
+\item To request storage for a project named `PROJECT\_X`, fill in the online \textcolor{blue}{\href{http://hpc.cs.ucl.ac.uk/file\_systems\_storage/cluster\_storage\_request\_form}{storage request form}}.
+\item Space will then be allocated to you in the location `/SAN/economics/PROJECT\_X` where `PROJECT\_X` is the name of your project.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Transferring Files to and from the CS HPC}
+\begin{itemize}
+\item Use sftp.
+\item Use email.
+\item The SAN can be accessed directly from a CSRW or from `tails` at the location `/slash/economics/research/PROJECT\_X`
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cluster rules/best practice}
+\begin{itemize}
+\item Never run jobs on head nodes (wise, vic)
 \item Store important data and/or large data on /SAN/economics/...
 \item Avoid high frequency reading/writing of large datafiles to/from disk
 \item If you need support, send email to cluster support, go visit them in person.
 \item Update wiki page with tips for colleagues about how to solve common problems.
-\item 
+\item See \textcolor{blue}{ \href{http://hpc.cs.ucl.ac.uk/cluster\_etiquette}{cluster etiquette}}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Memory management}
+\begin{itemize}
+\item Most nodes have between 2 and 8GB per core.  The physical machines vary from 4GB to 1TB.
+\item If you want to run a job requiring more than 47.2GB please contact request@cs.ucl.ac.uk.
+\item For the best job throughput please request less than 1.9G. That is:
+\item There are only a few machines with more than 64GB of memory. If you request more than 8G you will probably need to add a resource reservation to your job, unless the cluster is very empty.
+\item Although machines have 8, 16, 24, 48, 96, 128, 256 and 1TB of memory, in reality this translates into requestable memory of 7.9, 15.7, 23.5, 62.9, 47.2, 94.4GB. i.e. if you request 16G you will not be able to run on any of the 16G machines and your job will queue for longer.
+\item See \textcolor{blue}{ \href{http://hpc.cs.ucl.ac.uk/memory\_managment}{memory management}} for more details.
 \end{itemize}
 \end{frame}
 
 
-
+\begin{frame}
+\frametitle{Tasks in SGE}
+\end{frame}
 
 \end{document}
