@@ -1,5 +1,7 @@
 \documentclass{beamer}
 \usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{listings}
 \usetheme{Madrid}
 \usecolortheme{beaver}
 % \usepackage{beamerthemesplit} // Activate for custom appearance
@@ -55,14 +57,105 @@
 \item They will set up two accounts
 \begin{enumerate}
 \item CS departmental account (for remote access).
-\item CS Cluster account (to use cluster)
+\item CS Cluster account (to use cluster).
 \end{enumerate}
 \item By default, both accounts have same username and password.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Log on to cluster headnode: Thinlinc, ssh, or sftp}
+\frametitle{Connect to cluster}
+
+There are three ways to connect to the cluster:
+\begin{enumerate}
+\item Connect using ThinLinc (graphical interface).
+\item Connect using ssh (command line interface).
+\item Connect using ftp (data transfer).
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Connect using ThinLinc}
+
+Connecting using ThinLinc is a two-step process:
+\begin{enumerate}
+\item Connect to a \textbf{CSRW} (Computer Science Remote Worker) using your \textbf{CS Department Account} username and password.
+\begin{itemize}
+\item \textcolor{blue}{\href{http://www.cs.ucl.ac.uk/index.php?id=7404}{Instructions to dowload Thinlinc}}.
+\end{itemize}
+\item Then connect to one of the cluster login nodes (``vic" or ``wise") using your \textbf{CS Cluster Account} username and password.
+\begin{enumerate}
+\item Open terminal inside CSRW window. 
+\item Then type one of the following
+\begin{itemize}
+\item ssh vic
+\item ssh uctpXXX@vic
+\end{itemize}
+\item Enter your cluster password.
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Connect using ssh}
+\begin{itemize}
+\item For remote access (i.e. when not connected to UCL network), connecting is a two step process:
+\begin{enumerate}
+\item Connect to ``tails", ``storm" or ``jet" using your \textbf{CS Department Account} username and password.
+\item Connect to the cluster using your \textbf{CS Cluster Account} username and password.
+\end{enumerate}
+\item For access from within the UCL network (e.g. a desktop in Drayon House or the Econ HPC), skip step 1.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Connect to ``tails", ``jet" or ``storm"}
+\begin{itemize}
+\item Open an ssh client (e.g. putty) or a terminal.
+\item Type
+\begin{itemize}
+\item ssh -X uctpXXX@tails.cs.ucl.ac.uk
+\end{itemize} 
+\item Enter your CS dept. password.
+\item Note:
+\begin{itemize}
+\item The option `-X` allows graphics to be forwarded from the CS cluster to your computer.
+\item The username ``uctpXXX" is that given when you are assigned your CS department account.
+\item The text after the `@` is the address of the server.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Connect to the CS cluster from within CS network}
+\begin{itemize}
+\item Logon to the CS cluster using ssh.
+\item Type 
+\begin{itemize}
+\item ssh -X uctpXXX@vic
+\end{itemize}
+\item Enter your CS cluster password.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Connect to the CS disk storage using sftp}
+\begin{itemize}
+\item To transfer files to cluster storage use sftp instead of ssh.
+\item Open a terminal or an FTP client.
+\item Type
+\begin{itemize}
+\item sftp uctpXXX@tails.cs.ucl.ac.uk
+\end{itemize}
+\item Enter your CS department password.
+\item From tails, you can directly access the CS data storage. 
+\item For example, if you have previously  requested CS to 
+create a storage directory named ``Nesheim-IO", you can access this by typing:
+\begin{itemize}
+\item cd /slash/economics/research/Nesheim-IO
+\end{itemize}
+\item See below requesting CS data storage.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
