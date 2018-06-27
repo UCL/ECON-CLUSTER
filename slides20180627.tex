@@ -167,7 +167,7 @@ create a storage directory named ``PROJECT\_X", you can access this by typing:
 \frametitle{Typical workflow}
 \begin{enumerate}
 \item Logon to cluster.
-\item Transfer data and/or files to cluster (using ftp or email).
+\item Transfer data and/or files to cluster (using ftp, email, or some version control software like git).
 \item Edit files or code.
 \item Write a script to submit your job to SGE (Sun Grid Engine).
 \begin{itemize}
@@ -355,7 +355,6 @@ qdel 123456
 \end{semiverbatim}
 \end{itemize}
 \end{frame}
-
 \begin{frame}
 \frametitle{Software available}
 \begin{itemize}
@@ -536,7 +535,23 @@ ssh -X uctpXXX@jake
 
 
 \begin{frame}
-\frametitle{Tasks in SGE}
+\frametitle{Use SGE `task arrays` to run parallel jobs}
+\begin{itemize}
+\item Add a line like the following to your script
+\begin{semiverbatim}
+\#\$ -t 1-100
+\end{semiverbatim}
+\item Creates an array of 100 identical tasks each with an  id: SGE\_TASK\_ID between 1 and 100.
+\item For example, use this to run 100 bootstrap replications or 100 Monte Carlo replications.
+\begin{itemize}
+\item Highly efficient, highly robust way to run multiple jobs on cluster.
+\end{itemize}
+\item Use SGE\_TASK\_ID in your program to control inputs/outputs
+\begin{itemize}
+\item e.g. set random number seed to SGE\_TASK\_ID and save results with name based on task id.
+\end{itemize}
+\item Task arrays can also be used to solve much more complex parallelization tasks.
+\end{itemize}
 \end{frame}
 
 \end{document}
