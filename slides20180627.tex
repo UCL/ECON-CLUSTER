@@ -3,6 +3,9 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage{geometry,graphicx}
+\usepackage{fancyvrb}
+\usepackage{color}
+
 
 \usetheme{Madrid}
 \usecolortheme{beaver}
@@ -11,7 +14,7 @@
 \title{Using the Computer Science Cluster}
 \author{Alan Crawford \\
            Lars Nesheim}
-\date{June 27, 2018}
+\date{October 31, 2018}
 
 \begin{document}
 \lstset{language=Pascal}
@@ -377,15 +380,15 @@ module avail
 \resizebox{0.9 \textwidth}{!}{
 \begin{tabular}{lll}
 dot & matlab/r2012b & openmpi/gcc/1.10.0 \\
-econutils & matlab/r2013b & openmpit/gcc/1.8.1 \\
+econutils & matlab/r2013b & openmpi/gcc/1.8.1 \\
 gcc/5.2.0 & matlab/r2014a & openmpi/intel/1.10.0 \\
 gcc/6.2.1 & matlab/r2014b & openmpi/intel/1.8.1 \\
 git/2.8.3 & matlab/r2015b & R/3.4.2 \\
 intel/composer/2013.1.117 & module-info & stata/14 \\
 intel/composer/2015.1.133 & modules & totalview/8.15.7-6 \\
 julia/0.4.5 & nag/fll6i25dc & use.own \\
-knitro/10.0.1-z & nag/mbl6a23dml & \\
-knitro/10.1.2-z & nag/mbl6a24dnl & 
+knitro/10.0.1-z & nag/fll6i26dc & nag/mbl6a23dml \\
+knitro/10.1.2-z & nag/fll6i26df & nag/mbl6a24dnl
 \end{tabular}}
 \end{center}
 \label{default}
@@ -439,17 +442,14 @@ module load gcc/6.2.1 R/3.4.2
 \begin{frame}
 \frametitle{Examples}
 \begin{itemize}
-\item Fortran \vspace{0.2cm}
-\begin{semiverbatim}
-module load gcc/5.2.0 nag/fll6i25dc 
-\end{semiverbatim}
-\vspace{-0.4cm}
-\begin{semiverbatim}
-module load intel/composer/2015.1.133
-\end{semiverbatim} \vspace{-0.4cm}
-\begin{semiverbatim}
-module load openmpi/intel/1.10.0 totalview
-\end{semiverbatim}
+\item Fortran. A module for Fortran has not been setup. Instead proceed as follows: \vspace{0.2cm}
+\begin{enumerate}
+\item Set INTEL\_LICENSE\_FILE.
+\item Run 2 Intel scripts that set Unix environment variables.
+\item Compile and link program.
+\item Run and/or debug your program.
+\item Steps 1 and 2 can be completed by following instructions on the next slide.
+\end{enumerate}
 \item Julia
 \vspace{0.2cm}
 \begin{semiverbatim}
@@ -461,6 +461,43 @@ module load git/2.8.3 julia
 \begin{semiverbatim}
 module load knitro/10.1.2-z
 \end{semiverbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Set up Unix environment to use Intel Fortran 2018.}
+
+\begin{itemize}
+\item The simplest way to do this is to create a file named ``.bashrc" in your home directory with the following commands
+\begin{tiny}
+\begin{Verbatim}
+# Sample .bashrc file
+# Run script to start modules program
+#     (do not forget the . at the beginning of the line) 
+. /share/apps/econ/Modules/modules.sh
+
+# Export intel_license_file and run scripts to set Intel environment variables
+export INTEL_LICENSE_FILE=28518@lic-intel.ucl.ac.uk
+export INTEL_DIR="/share/apps/intel_parallel_studio_xe_2018/parallel_studio_xe_2018.3.051"
+source ${INTEL_DIR}/bin/psxevars.sh
+source ${INTEL_DIR}/compilers_and_libraries_2018/linux/mpi/intel64/bin/mpivars.sh
+\end{Verbatim}
+\end{tiny}
+\item Now, these commands will be automatically run every time you login.
+\item Then the fortran compiler command is ``ifort".
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Compiling fortran}
+\begin{itemize}
+\item To compile:
+\begin{Verbatim}
+ifort test.f90 -o test.exe.    # compile serial fortran program
+mpiifort test.f90 -o test_mpi.exe.  # compile MPI program
+\end{Verbatim}
+\item Add flags for debugging or for optimization (type ``man ifort" for help).
+\item Link to NAG libaries or other libraries if desired.
 \end{itemize}
 \end{frame}
 
